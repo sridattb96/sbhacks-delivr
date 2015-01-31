@@ -42,7 +42,8 @@ app.post('/post', function(req, res){
 	//if (not session variable - logged into facebook) -> print out that your session is logged out
 	//else -> run below
 	var col = db.collection("userPosts")
-
+	var temp = req.body
+	temp["TimeOfPost"] = new Date()
 	col.insert(req.body, {}, function(e,results){
 		if (e){
 			res.status(500).send()
