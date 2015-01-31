@@ -50,10 +50,10 @@ function startNewsFeed(){
 }
 
 function createTable(restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
+	var buttonElement = document.createElement("button");
 	var table = $('#appendTable');
 	table.append("<tr><td>Chang Bhamidipati</td><td>" + restaurant + "</td><td>" + food + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" 
-		+ deliveryFee + "</td><td>" + timeOfPost + "</td></tr>");
-
+		+ deliveryFee + "</td><td>" + timeOfPost + "</td><td>" + buttonElement + "</td></tr>");
 
 
 }
@@ -125,8 +125,8 @@ function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, tim
 
 	ordersList.appendChild(document.createElement("br"));
 
-	var buttonelement = document.createElement("button");
-	buttonelement.innerHTML = "Delivr";
+	var buttonElement = document.createElement("button");
+	buttonElement.innerHTML = "Delivr";
 
 	ordersList.appendChild(document.createElement("br"));
 
