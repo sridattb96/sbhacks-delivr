@@ -1,5 +1,43 @@
+/* */
+// Compile our Underscore template
+var table_template = _.template($('#table_template').html());
+// Grab the container we want to load our table into
+var table_container = $('#');
+// Some data for us to load
+
+
+
+/*this is where the ajax code for the post request button goes*/
+var loginform = document.getElementById("orderForm");
+$(loginform).on("submit", function(ev){
+  ev.preventDefault();
+
+  $.ajax({
+    type: "POST",
+    url: "http://localhost:5000/post",
+    data:{
+      Restaurant:document.getElementById("inputRestaurant").value,
+      Food:document.getElementById("inputFood").value,
+      TimeRange:document.getElementById("inputTimeRange").value,
+      MyLocation:document.getElementById("inputMyLocation").value,
+      DeliveryFee:document.getElementById("inputDeliveryPrice").value,
+      TimeOfPost: new Date()
+    },
+    success:function(response1){
+      window.location.reload();
+
+       
+    },
+    xhrFields: {withCredentials: true},
+    error:function(response2){
+      console.log("ERROR")
+    }
+  });
+});
+
+  
+
 function startNewsFeed(){
-	console.log("startNewsFeed called!!!!!!");
 	$.ajax({
 		type: "GET",
 		url: "http://localhost:5000/newsfeed",
@@ -20,7 +58,6 @@ function startNewsFeed(){
 }
 
 function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
-	console.log("createRequest called!!!!!!");
 
 	var ordersList = document.getElementById("ordersList")
 
