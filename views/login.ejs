@@ -22,7 +22,7 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- Navbar -->
-    <%-include navbar-partial.ejs %>
+    <%-include('navbar-partial', {type: "login"}) %>
     
 
     <!-- Banner -->
@@ -48,6 +48,11 @@
           </div>
           <div class="form-group">
             <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputFood" placeholder="Food">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-10">
               <input type="text" class="form-control" id="inputTimeRange" placeholder="Time Range">
             </div>
           </div>
@@ -58,7 +63,7 @@
           </div>
           <div class="form-group">
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputDeliveryPrice" placeholder="Delivery Price">
+              <input type="text" class="form-control" id="inputDeliveryPrice" placeholder="Delivery Fee">
             </div>
           </div>
           <div class="form-group">
@@ -130,7 +135,6 @@
     <script src="upload.js"></script>
 
     <script>
-
     /*this is where the ajax code for the post request button goes*/
     var loginform = document.getElementById("orderForm");
     $(loginform).on("submit", function(ev){
@@ -141,9 +145,10 @@
           url: "http://localhost:5000/post",
           data:{
               Restaurant:document.getElementById("inputRestaurant").value,
+              Food:document.getElementById("inputFood").value,
               TimeRange:document.getElementById("inputTimeRange").value,
               MyLocation:document.getElementById("inputMyLocation").value,
-              DeliveryPrice:document.getElementById("inputDeliveryPrice").value,
+              DeliveryFee:document.getElementById("inputDeliveryPrice").value,
               TimeOfPost: new Date()
           },
           success:function(response1){
