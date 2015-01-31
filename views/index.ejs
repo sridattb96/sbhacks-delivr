@@ -23,29 +23,7 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- Navbar -->
-
-
-    
-
-    <!-- Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="loginModalLabel">Facebook Sign-In</h4>
-          </div>
-          <div class="modal-body">
-            Enter your Facebook Stuff
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Sign in with Facebook</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <%-include('navbar-partial', {type: "home"}) %>
 
     <!-- Banner -->
     <div class="jumbotron banner">
@@ -173,19 +151,6 @@
         offset: navHeight
       });
 
-      /* smooth scrolling sections */
-      $('a[href*=#]:not([href=#])').click(function() {
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-          var target = $(this.hash);
-          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-          if (target.length) {
-            $('html,body').animate({
-              scrollTop: target.offset().top - 50
-            }, 1000);
-            return false;
-          }
-        }
-      });
     </script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
