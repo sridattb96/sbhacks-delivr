@@ -23,6 +23,9 @@ app.get('/', function(req, res) {
   res.render('index.ejs');
 })
 
+app.get('/login', function(req, res) {
+  res.render('login.ejs');
+})
 
 var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {});
