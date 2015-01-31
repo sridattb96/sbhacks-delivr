@@ -24,9 +24,11 @@
     <![endif]-->
     <!-- Navbar -->
     <%-include('navbar-partial', {type: "home"}) %>
+    
 
     <!-- Banner -->
     <div class="jumbotron banner">
+
       <br>
       <br>
       <br>
@@ -42,6 +44,8 @@
     
     <div class="container">
       <div class="row">
+        <div id="fb-root"><button class="btn btn-primary  btn-large" onclick="Login()">Login with Facebook</button></div>
+        <div id="status"></div>
 
         <!--left-->
         <div class="col-md-3" id="aboutSections">
@@ -128,7 +132,7 @@
 
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/redirect.js"></script>
+    <!-- <script src="js/redirect.js"></script> -->
 
     <!-- Plugin JavaScript -->
     <script src="js/vendor/jquery.easing.1.3.js"></script>
@@ -151,6 +155,83 @@
         offset: navHeight
       });
 
+    </script>
+
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1396800567290730', // App ID
+          status     : true, // check login status
+          cookie     : true, // enable cookies to allow the server to access the session
+          xfbml      : true  // parse XFBML
+        });
+        };
+     
+      (function(d){
+         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement('script'); js.id = id; js.async = true;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         ref.parentNode.insertBefore(js, ref);
+       }(document));
+
+      function Login()
+      {
+        FB.login(function(response) {
+         if (response.authResponse) 
+         {
+              getUserInfo(); // Get User Information.
+
+          } else
+          {
+           console.log('Authorization failed.');
+          }
+         },{scope: 'email'});
+      }
+      function getUserInfo() {
+       FB.api('/me', function(response) {
+ 
+        //response.name       - User Full name
+        //response.link       - User Facebook URL
+        //response.username   - User name
+        //response.id         - id
+        //response.email      - User email
+ 
+        });
+      }
+
+      function Logout()
+      {
+          FB.logout(function(){document.location.reload();});
+       
+      }
+      function getUserInfo() {
+        FB.api('/me', function(response) {
+
+          console.log(response.name);
+ 
+        var str="<b>Name</b> : "+response.name+"<br>";
+            str +="<b>Link: </b>"+response.link+"<br>";
+            str +="<b>Username:</b> "+response.username+"<br>";
+            str +="<b>id: </b>"+response.id+"<br>";
+            str +="<b>Email:</b> "+response.email+"<br>";
+            str +="<input type='button' value='Get Photo' onclick='getPhoto();'/>";
+            str +="<input type='button' value='Logout' onclick='Logout();'/>";
+            document.getElementById("status").innerHTML=str;
+   
+        });
+      }
+
+      // Load the SDK asynchronously
+      (function(d){
+         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement('script'); js.id = id; js.async = true;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         ref.parentNode.insertBefore(js, ref);
+       }(document));
+
+     
     </script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

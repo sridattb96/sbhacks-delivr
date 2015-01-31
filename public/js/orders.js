@@ -25,6 +25,7 @@ $(function() {
 	  });
 	});
 
+
 	function startNewsFeed(){
 		$.ajax({
 			type: "GET",
