@@ -20,23 +20,13 @@ app.param('collectionName', function(req, res, next, collectionName){
   return next()
 })
 app.get('/', function(req, res) {
-  res.render('index.ejs', { req : req, res : res });
+  res.render('index.ejs', { req : req, res : res }); // !!!
 
-})
-app.get('/test', function(req, res){
-
-  res.send(req.protocol + '://' + req.get('host'));
 })
 
 app.get('/login', function(req, res) {
   res.render('login.ejs');
 })
-
-// app.get('/newsfeed', function(req, res) {
-//   res.render('newsfeed.ejs');
-// })
-
-//post a request for a food delivery
 
 app.post('/post', function(req, res){
 	//if (not session variable - logged into facebook) -> print out that your session is logged out
@@ -48,7 +38,7 @@ app.post('/post', function(req, res){
 			res.status(500).send()
 		}
 		else{
-			res.send("Success!")
+			res.send(results)
 		}
 	});
 });
@@ -56,14 +46,6 @@ app.get('/newsfeedpage', function(req,res){
 	res.render('newsfeed.ejs');
 })
 app.get('/newsfeed', function(req,res){
-	var col = db.collection("userPosts")
-
-	col.find().toArray(function(e, results){
-		res.send(results);
-	});
-});
-
-app.get('/test/newsfeed', function(req,res){
 	var col = db.collection("userPosts")
 
 	col.find().toArray(function(e, results){

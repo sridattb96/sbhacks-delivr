@@ -17,6 +17,15 @@ body {
   background-size: cover;
 }
 
+.banner2 {
+  min-height: 15%;
+  overflow: hidden;
+  background-image: url(https://ununsplash.imgix.net/photo-1416854905195-f4c96ea8f949?fit=crop&fm=jpg&h=1400&q=75&w=1050);
+  background-attachment: fixed;
+  background-size: cover;
+
+}
+
 .affix-top,.affix{
  position: static;
 }
@@ -83,6 +92,12 @@ body {
   }
 }
 
+/* Order */
+.orderContainer {
+  margin: 0 auto;
+  max-width: 800px;
+  
+}
 
 
 
