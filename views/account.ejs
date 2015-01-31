@@ -1,0 +1,9 @@
+<% if (!user) { %>
+	<h2>Welcome! Please log in.</h2>
+<% } else { %>
+	<h2>Hello, <%= user.displayName %>.</h2>
+<% } %>
+
+<p>ID: <%= user.id %></p>
+<p>Username: <%= user.username %></p>
+<p>Name: <%= user.displayName %></p>

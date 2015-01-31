@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>foodApp 2k15</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="css/bootstrap-theme.min.css"> -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+  </head>
+  <body class="loginPage" onLoad="startNewsFeed()">
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Navbar -->
+    <%-include('navbar-partial', {type: "login"}) %>
+    
+
+    <!-- Banner -->
+    <div class="jumbotron banner2">
+      <br>
+      <div class="container animated fadeInUp">
+        <h1>Place Your Order</h1>
+        <p>sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax</p>
+        <p>
+          <a class="btn btn-lg btn-default" href="../../components/#navbar" role="button">Learn More &raquo;</a>
+        </p>
+      </div>
+    </div>
+    <div class="container orderContainer">
+      <div class="row">
+        <h1> Order Form </h1>
+        <br>
+      </div>
+      
+      <!-- Order Form -->
+      <form id="orderForm" class="form-horizontal">
+        <div class="form-group">
+          <label for="inputRestaurant" class="col-sm-2 control-label">Restaurant:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="inputRestaurant" placeholder="Restaurant">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputFood" class="col-sm-2 control-label">Food:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="inputFood" placeholder="Food">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputTimeRange" class="col-sm-2 control-label">Time Range:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="inputTimeRange" placeholder="Time Range">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputMyLocation" class="col-sm-2 control-label">Location:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="inputMyLocation" placeholder="Location">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputDeliveryPrice" class="col-sm-2 control-label">Delivery Fee:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="inputDeliveryPrice" placeholder="Delivery Fee ($)">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-6">
+            <button type="submit" class="btn btn-success">Post Request</button>
+          </div>
+        </div>
+
+      </form>
+    </div> <!--/container-->
+
+
+    <hr> 
+
+    <!-- Order List -->
+    <div class="container">
+      <div id="ordersList">
+      </div>
+
+    </div>
+
+    <div class="container">
+      <table class="table table-hover">
+        <caption>This is fancy.</caption>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Restaurant</th>
+            <th>Food</th>
+            <th>Time Range</th>  
+            <th>Location</th>
+            <th>Delivery Fee</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody id="appendTable">
+            
+
+            
+        </tbody>
+      </table>
+    </div>
+
+    <div id="orderTable">
+    </div>  
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <script src="js/vendor/bootstrap.min.js"></script>
+
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="js/orders.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/vendor/jquery.easing.1.3.js"></script>
+
+    <script src="//connect.facebook.net/en_US/all.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+      <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+
+    
+
+  </body>
+</html>
+
+
