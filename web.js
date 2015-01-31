@@ -6,6 +6,7 @@ var mongo = require('mongodb');
 
 var app = express()
 app.use(bodyParser())
+app.use(express.static(__dirname + '/css'));
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 var mongoUri = process.env.MONGOLAB_URI ||
