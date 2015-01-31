@@ -4,10 +4,6 @@ var express = require('express'),
 var logfmt = require("logfmt");
 var mongo = require('mongodb');
 
-var options = { };
-
-var apnConnection = new apn.Connection(options);
-
 var app = express()
 app.use(bodyParser())
 
@@ -24,6 +20,7 @@ app.param('collectionName', function(req, res, next, collectionName){
 app.get('/', function(req, res) {
   res.send("working")
 })
+
 
 var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {});
