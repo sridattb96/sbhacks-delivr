@@ -32,18 +32,16 @@ app.get('/login', function(req, res) {
   res.render('login.ejs');
 })
 
+// app.get('/newsfeed', function(req, res) {
+//   res.render('newsfeed.ejs');
+// })
+
 //post a request for a food delivery
 
 app.post('/post', function(req, res){
-	//check for session variable - logged into facebook
-	//if not, print out that your session is logged out. else run below
+	//if (not session variable - logged into facebook) -> print out that your session is logged out
+	//else -> run below
 	var col = db.collection("userPosts")
-
-	var restaurant = req.body.Restaurant;
-	var timeRange = req.body.TimeRange;
-	var myLocation = req.body.MyLocation;
-	var deliveryPrice = req.body.DeliveryPrice;
-	var timeOfPost = req.body.TimeOfPost;
 
 	col.insert(req.body, {}, function(e,results){
 		if (e){
@@ -53,20 +51,23 @@ app.post('/post', function(req, res){
 			res.send("Success!")
 		}
 	});
-
-	console.log(restaurant)
-	console.log(timeRange)
-	console.log(myLocation)
-	console.log(deliveryPrice)
-	console.log(timeOfPost)
-
 });
-
-app.get('/test/post', function(req,res){
+app.get('/newsfeedpage', function(req,res){
+	res.render('newsfeed.ejs');
+})
+app.get('/newsfeed', function(req,res){
 	var col = db.collection("userPosts")
 
 	col.find().toArray(function(e, results){
-		res.send(results)
+		res.send(results);
+	});
+});
+
+app.get('/test/newsfeed', function(req,res){
+	var col = db.collection("userPosts")
+
+	col.find().toArray(function(e, results){
+		res.send(results);
 	});
 });
 
