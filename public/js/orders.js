@@ -11,6 +11,7 @@ $(loginform).on("submit", function(ev){
     type: "POST",
     url: "http://localhost:5000/post",
     data:{
+    	
       Restaurant:document.getElementById("inputRestaurant").value,
       Food:document.getElementById("inputFood").value,
       TimeRange:document.getElementById("inputTimeRange").value,
@@ -61,7 +62,7 @@ function createTable(restaurant, food, timeRange, myLocation, deliveryFee, timeO
 
 
 
-function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
+/*function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
 
 	var ordersList = document.getElementById("ordersList")
 
@@ -114,6 +115,6 @@ function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, tim
 	ordersList.appendChild(document.createElement("br"));
 	ordersList.appendChild(document.createElement("br"));
 
-}
+} */
 
 

@@ -18,7 +18,7 @@
 
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
   </head>
-  <body>
+  <body class="indexPage">
     <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -41,10 +41,11 @@
 
       </div>
     </div>
-    
+    <div id = "temp">
+    </div>
     <div class="container">
       <div class="row">
-        <div id="fb-root"><button class="btn btn-primary  btn-large" onclick="Login()">Login with Facebook</button></div>
+        <button class="btn btn-primary btn-large" onclick="Login()">Login with Facebook</button></div>
         <div id="status"></div>
 
         <!--left-->
@@ -188,17 +189,6 @@
           }
          },{scope: 'email'});
       }
-      function getUserInfo() {
-       FB.api('/me', function(response) {
- 
-        //response.name       - User Full name
-        //response.link       - User Facebook URL
-        //response.username   - User name
-        //response.id         - id
-        //response.email      - User email
- 
-        });
-      }
 
       function Logout()
       {
@@ -207,8 +197,8 @@
       }
       function getUserInfo() {
         FB.api('/me', function(response) {
-
           console.log(response.name);
+
  
         var str="<b>Name</b> : "+response.name+"<br>";
             str +="<b>Link: </b>"+response.link+"<br>";
@@ -230,6 +220,8 @@
          js.src = "//connect.facebook.net/en_US/all.js";
          ref.parentNode.insertBefore(js, ref);
        }(document));
+
+      
 
      
     </script>
