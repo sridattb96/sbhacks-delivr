@@ -1,0 +1,15 @@
+{
+  "name": "m",
+  "version": "1.0.0",
+  "description": "m",
+  "main": "index.js",
+  "scripts": {
+    "test": "k"
+  },
+  "repository": {
+    "type": "git",
+    "url": "k"
+  },
+  "author": "",
+  "license": "ISC"
+}
