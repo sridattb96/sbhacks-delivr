@@ -20,7 +20,7 @@ app.param('collectionName', function(req, res, next, collectionName){
   return next()
 })
 app.get('/', function(req, res) {
-  res.render('index.html');
+  res.render('index.ejs');
 })
 
 
