@@ -1,8 +1,99 @@
-
-
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+html {
+  height: 100%;
+}
+
+body {
+  height:100%;
+}
+
+.banner {
+  min-height: 100%;
+  overflow: hidden;
+  background-image: url(https://unsplash.imgix.net/photo-1416184008836-5486f3e2cf58?fit=crop&fm=jpg&q=75&w=1050);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.affix-top,.affix{
+ position: static;
+}
+
+@media (min-width: 979px) {
+  #sidebar.affix-top {
+    position: static;
+    margin-top:30px;
+    width:228px;
+  }
+  
+  #sidebar.affix {
+    position: fixed;
+    top:70px;
+    width:228px;
+  }
+}
+
+#sidebar li.active {
+  border:0 #eee solid;
+  border-right-width:5px;
+}
+
+@media(min-width:767px) {
+  .navbar {
+    box-shadow: none ;
+    -webkit-box-shadow: none;
+    padding: 20px 20px;
+    border-bottom: 0;
+    letter-spacing: 2px;
+    background: none; 
+    -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+    -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+    transition: background .5s ease-in-out,padding .5s ease-in-out;
+  }
+    .navbar a {
+      color: white;
+    }
+
+    .navbar-default .navbar-brand {
+      color: black;
+      text-transform: lowercase;
+    }    
+
+    .navbar-default .navbar-nav > li > a {
+      color: black;
+    }
+    .navbar-default .navbar-nav > .active > a,
+    .navbar-default .navbar-nav > .active > a:hover,
+    .navbar-default .navbar-nav > .active > a:focus {
+      color: black ;
+      background-color: rgba(255,255,255,0);
+    }
+
+   
+
+/* Added Classes by jQuery */
+  .top-nav-collapse {
+    padding: 0px 20px;
+    background-color: white;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
