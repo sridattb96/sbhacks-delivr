@@ -29,8 +29,6 @@ $(loginform).on("submit", function(ev){
   });
 });
 
-  
-
 function startNewsFeed(){
 	$.ajax({
 		type: "GET",
@@ -40,7 +38,7 @@ function startNewsFeed(){
 		success:function(data){
 			console.log(data.length)
 			for (var i = 0; i < data.length; i++){
-			createRequest(data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost);
+			createTable(data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost);
 			}
 			console.log(data[i].Restaurant);
 		},
@@ -50,6 +48,18 @@ function startNewsFeed(){
        		}
 	});
 }
+
+
+function createTable(restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
+	var table = $('#appendTable');
+	table.append("<tr><td>Chang Bhamidipati</td><td>" + restaurant + "</td><td>" + food + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" 
+		+ deliveryFee + "</td><td>" + timeOfPost + "</td></tr>");
+
+
+
+}
+
+
 
 function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
 
@@ -97,11 +107,12 @@ function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, tim
 
 	ordersList.appendChild(document.createElement("br"));
 
-	var buttonelement = document.createElement("button");
-	buttonelement.innerHTML = "Delivr";
+	var buttonElement = document.createElement("button");
+	buttonElement.innerHTML = "Delivr";
+	ordersList.appendChild(buttonElement);
 
 	ordersList.appendChild(document.createElement("br"));
-
+	ordersList.appendChild(document.createElement("br"));
 
 }
 
