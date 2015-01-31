@@ -11,9 +11,9 @@ app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 var mongoUri = process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
-  'mongodb://localhost:27017/mydb';
+  'mongodb://localhost:27017/collectionName';
 
-var db = mongoskin.db(mongoUri, {safe:true})
+var db = mongoskin.db(mongoUri, {safe:true});
 
 app.param('collectionName', function(req, res, next, collectionName){
   req.collection = db.collection(collectionName)
