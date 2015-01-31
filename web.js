@@ -6,7 +6,8 @@ var mongo = require('mongodb');
 
 var app = express()
 app.use(bodyParser())
-
+app.set('views', __dirname + '/views');
+app.engine('html', require('ejs').renderFile);
 var mongoUri = process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
   'mongodb://localhost/mydb';
@@ -18,7 +19,7 @@ app.param('collectionName', function(req, res, next, collectionName){
   return next()
 })
 app.get('/', function(req, res) {
-  res.send("working")
+  res.render('index.html');
 })
 
 
