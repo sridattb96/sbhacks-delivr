@@ -3,10 +3,10 @@ var express = require('express'),
   bodyParser = require('body-parser')
 var logfmt = require("logfmt");
 var mongo = require('mongodb');
-
+var path = require('path')
 var app = express()
 app.use(bodyParser())
-app.use(express.static(__dirname + '/css'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 var mongoUri = process.env.MONGOLAB_URI ||
