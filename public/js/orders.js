@@ -49,6 +49,7 @@ function startNewsFeed(){
 	});
 }
 
+
 function createTable(restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
 	var buttonElement = document.createElement("button");
 	var table = $('#appendTable');
@@ -59,25 +60,6 @@ function createTable(restaurant, food, timeRange, myLocation, deliveryFee, timeO
 }
 
 
-// function startNewsFeed(){
-// 	$.ajax({
-// 		type: "GET",
-// 		url: "http://localhost:5000/newsfeed",
-// 		data: {
-// 		},
-// 		success:function(data){
-// 			console.log(data.length)
-// 			for (var i = 0; i < data.length; i++){
-// 			createRequest(data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost);
-// 			}
-// 			console.log(data[i].Restaurant);
-// 		},
-// 		xhrFields: {withCredentials: true},
-//       		error:function(response2){
-//        			console.log("ERROR")
-//        		}
-// 	});
-// }
 
 function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
 
@@ -127,9 +109,10 @@ function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, tim
 
 	var buttonElement = document.createElement("button");
 	buttonElement.innerHTML = "Delivr";
+	ordersList.appendChild(buttonElement);
 
 	ordersList.appendChild(document.createElement("br"));
-
+	ordersList.appendChild(document.createElement("br"));
 
 }
 
