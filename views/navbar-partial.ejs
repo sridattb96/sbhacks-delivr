@@ -13,10 +13,15 @@
   <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="active"><a href="index.html">HOME</a></li>
+      <% if (type == "login") { %>
       <li>
-        
+        <a href=""> <%= type %> </a>
       </li>
+      <% } else { %>
       <li><fb:login-button scope="public_profile,email" onlogin="checkLoginState();" style="top:14px; position:relative;"></fb:login-button></li>
+      <% } %>
+      
+
      
 
     </ul>
