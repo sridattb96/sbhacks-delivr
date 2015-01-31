@@ -11,5 +11,12 @@
     "url": "k"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.11.0",
+    "express": "^4.11.1",
+    "logfmt": "^1.2.0",
+    "mongodb": "^1.4.29",
+    "mongoskin": "^1.4.12"
+  }
 }
