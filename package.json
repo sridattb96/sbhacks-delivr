@@ -1,0 +1,24 @@
+{
+  "name": "m",
+  "version": "1.0.0",
+  "description": "m",
+  "main": "index.js",
+  "scripts": {
+    "test": "k"
+  },
+  "repository": {
+    "type": "git",
+    "url": "k"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.11.0",
+    "ejs": "^2.2.3",
+    "express": "^4.11.1",
+    "logfmt": "^1.2.0",
+    "mongodb": "^1.4.29",
+    "mongoskin": "^1.4.12",
+    "path": "^0.11.14"
+  }
+}
