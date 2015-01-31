@@ -9,7 +9,7 @@ $(loginform).on("submit", function(ev){
 
   $.ajax({
     type: "POST",
-    url: "http://localhost:5000/post",
+    url: "/post",
     data:{
       Restaurant:document.getElementById("inputRestaurant").value,
       Food:document.getElementById("inputFood").value,
@@ -34,7 +34,7 @@ $(loginform).on("submit", function(ev){
 function startNewsFeed(){
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:5000/newsfeed",
+		url: "/newsfeed",
 		data: {
 		},
 		success:function(data){
