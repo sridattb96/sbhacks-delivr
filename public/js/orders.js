@@ -51,6 +51,7 @@ function startNewsFeed(){
 	});
 }
 
+
 function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
 
 	var ordersList = document.getElementById("ordersList")
@@ -97,11 +98,12 @@ function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, tim
 
 	ordersList.appendChild(document.createElement("br"));
 
-	var buttonelement = document.createElement("button");
-	buttonelement.innerHTML = "Delivr";
+	var buttonElement = document.createElement("button");
+	buttonElement.innerHTML = "Delivr";
+	ordersList.appendChild(buttonElement);
 
 	ordersList.appendChild(document.createElement("br"));
-
+	ordersList.appendChild(document.createElement("br"));
 
 }
 
