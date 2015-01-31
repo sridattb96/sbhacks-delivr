@@ -22,7 +22,10 @@ app.param('collectionName', function(req, res, next, collectionName){
 app.get('/', function(req, res) {
   res.render('index.ejs');
 })
+app.get('/test', function(req, res){
 
+  res.send(req.protocol + '://' + req.get('host'));
+})
 
 var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {});
