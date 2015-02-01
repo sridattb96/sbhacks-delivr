@@ -21,7 +21,7 @@ body {
   min-height: 15%;
   overflow: hidden;
   opacity: 70%;
-  background-image: url(https://ununsplash.imgix.net/photo-1416854905195-f4c96ea8f949?fit=crop&fm=jpg&h=1400&q=75&w=1050);
+  background-image: url(https://ununsplash.imgix.net/uploads/1413259835094dcdeb9d3/6e609595?fit=crop&fm=jpg&h=700&q=75&w=1050);
   background-attachment: fixed;
   background-size: cover;
 
@@ -69,17 +69,38 @@ body {
     }    
 
     .navbar-default .navbar-nav > li > a {
-      color: black;
+      color: white;
     }
     .navbar-default .navbar-nav > .active > a,
     .navbar-default .navbar-nav > .active > a:hover,
     .navbar-default .navbar-nav > .active > a:focus {
-      color: black;
+      color: white;
       background-color: rgba(255,255,255,0);
+      border-bottom: 2px solid white;
     }
 
-/* Inner Banner */
-.banner-inner {
+    .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+      color: white;
+    }
+
+/* Inner Banners */
+div.banner-inner {
+  color: white;
+  background-color: rgba(131, 114, 114, 0.4);
+  padding: 20px 30px;
+  position: relative;
+  
+  float: left;
+  width:60%;
+}
+  div.banner-inner h1 {
+    color: rgb(50, 46, 46);
+  }
+  div.banner-inner p {
+    color: rgb(65, 65, 65);
+  }
+
+div.banner-inner2 {
   color: white;
 }
 
@@ -118,6 +139,44 @@ body {
 .delivrButton {
   width:150px;
 }
+
+a.nav-btn {
+  margin-left:8px;
+  color: white;
+}
+
+#double-angle {
+  float: right;
+
+
+}
+  #double-angle:before {
+    color: rgb(50, 46, 46);
+  }
+  #double-angle:hover {
+    border: none;
+    text-decoration: none;
+  
+  }
+  #double-angle:focus {
+    text-decoration: none;
+    border: none;
+  }
+
+#double-angle2 {
+  float: right;
+  color:white;
+}
+  #double-angle2:hover {
+    border: none;
+    text-decoration: none;
+  
+  }
+  #double-angle2:focus {
+    text-decoration: none;
+    border: none;
+  }
+  
 
 
 

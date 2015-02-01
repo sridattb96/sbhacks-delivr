@@ -25,7 +25,7 @@
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <span class=""><a href="" class="navbar-brand">// delivr</a></span>
+          <span class=""><a href="/" class="navbar-brand" style="display:none;"><i class="fa fa-cutlery"></i> delivr</a></span>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle Nav</span>
             <span class="icon-bar"></span>
@@ -36,18 +36,18 @@
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="/">HOME</a></li>
+          <li class="active"><a class="nav-btn" href="/">HOME</a></li>
           <% if (!user) { %>
-            <li><a class="btn" href="/auth/facebook">SIGN IN</a></li>
+            <li><a class="btn nav-btn" href="/auth/facebook">SIGN IN</a></li>
           <% } else { %>
-            <li><a href="/feed">FEED</a>
+            <li><a class="nav-btn" href="/feed">FEED</a>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <a href="#" class="nav-btn dropdown-toggle" data-toggle="dropdown">
               <img src="http://graph.facebook.com/<%= user.id %>/picture" class="profile-image img-circle">  <%= user.displayName %> <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <!-- <li><a href="#"><i class="fa fa-cog"></i> Account</a></li>
                 <li class="divider"></li> -->
-                <li><a href="/logout"><i class="fa fa-sign-out"></i> Sign-out</a></li>
+                <li><a class="" href="/logout"><i class="fa fa-sign-out"></i> Sign-out</a></li>
               </ul>
             </li>
           <% } %>
@@ -62,12 +62,14 @@
       <br>
       <br>
       <br>
+      <br>
       <div class="banner-inner container animated fadeInUp">
-        <h1>Welcome Bruh</h1>
-        <p>sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax</p>
-        <p>
+        <h1>Welcome to Delivr.</h1>
+        <p><b>A cross-platform, simple app for fulfilling your foodie needs.</b></p>
+        <!-- <p>
           <a class="btn btn-lg btn-default" href="#sec1" role="button">Learn More &raquo;</a>
-        </p>
+        </p> -->
+        <a id="double-angle" href="#sec1" class="fa fa-angle-double-down fa-3x" style="color:white;"></a>
 
       </div>
     </div>
@@ -85,8 +87,8 @@
         </div><!--/left-->
         
         <!--right-->
-        <div class="col-md-9">
-          <h2 id="sec1">Get a live feed of what restaurants people love to eat from.</h2>
+        <div class="col-md-9" id="sec1">
+          <h2>Get a live feed of what restaurants people love to eat from.</h2>
           <p></p>
           
           <h2 id="sec2">Make some quick cash by delivering to your hungry peers. </h2>
