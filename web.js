@@ -119,6 +119,7 @@ app.post('/deliveryInfo', function(req, res){
 			res.status(500).send()
 		}
 		else{
+			console.log("got here");
 			res.send(results)
 		}
 	}

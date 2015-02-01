@@ -69,18 +69,20 @@ $(loginform).on("submit", function(ev){
 
 	function createTable( request_id, name, restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
 		var table = $('#appendTable');
-		//var name = "ChangMikeSridatt";
 		var buttontext = "Delivr";
+		//var first = name.substring(0, indexOf(' '));
+		//name = first;
+		console.log(timeOfPost);
 
 		table.append(
 			"<tr><td>" + name + "</td><td>" + restaurant + "</td><td>" + food + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" 
-			+ deliveryFee + "</td><td>" + timeOfPost + "</td><td>" + "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-success delivrButton\">" + buttontext + "</td></tr>");
-
+			+ "$" + deliveryFee + "</td><td>" + timeOfPost + "</td><td>" + "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-success delivrButton\">" + buttontext + "</td></tr>");
 	}
 
 	function sendDeliverInfo(data, myId){
 		var myName = document.getElementById("name").innerHTML;
 		var eta = 35;
+		alert("You: " + myName + " Requester: " + data[myId].Name);
 		// console.log(myName)
 		// console.log(data[id].Name)
 		// console.log(eta)
@@ -103,7 +105,6 @@ $(loginform).on("submit", function(ev){
 				console.log("ERROR")
 			}
 		});
-
 	}
 
 
