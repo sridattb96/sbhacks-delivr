@@ -120,7 +120,7 @@ app.post('/deliveryInfo', function(req, res){
 		}
 		else{
 			console.log("got here");
-			res.send(results)
+			res.send(req.body)
 		}
 	});
 });
