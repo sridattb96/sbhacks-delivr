@@ -12,7 +12,7 @@ body {
 .banner {
   min-height: 100%;
   overflow: hidden;
-  background-image: url(https://unsplash.imgix.net/photo-1416184008836-5486f3e2cf58?fit=crop&fm=jpg&q=75&w=1050);
+  background-image: url(http://picjumbo.com/wp-content/uploads/HNCK2216-1300x866.jpg);
   background-attachment: fixed;
   background-size: cover;
 }
@@ -20,6 +20,7 @@ body {
 .banner2 {
   min-height: 15%;
   overflow: hidden;
+  opacity: 70%;
   background-image: url(https://ununsplash.imgix.net/photo-1416854905195-f4c96ea8f949?fit=crop&fm=jpg&h=1400&q=75&w=1050);
   background-attachment: fixed;
   background-size: cover;
@@ -61,13 +62,10 @@ body {
     -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
     transition: background .5s ease-in-out,padding .5s ease-in-out;
   }
-    .navbar a {
-      color: white;
-    }
 
     .navbar-default .navbar-brand {
-      color: black;
       text-transform: lowercase;
+      color: black;
     }    
 
     .navbar-default .navbar-nav > li > a {
@@ -76,29 +74,36 @@ body {
     .navbar-default .navbar-nav > .active > a,
     .navbar-default .navbar-nav > .active > a:hover,
     .navbar-default .navbar-nav > .active > a:focus {
-      color: black ;
+      color: black;
       background-color: rgba(255,255,255,0);
     }
+
+/* Inner Banner */
+.banner-inner {
+  color: white;
+}
 
 /* Dynamic Elements */
 .profile-image {
   max-height: 30px;
   margin-top: -5px;
   margin-right: 5px;
-   width: auto; 
+  width: auto; 
   vertical-align: middle;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
 }
    
 
 /* Added Classes by jQuery */
-  .top-nav-collapse {
-    padding: 0px 20px;
-    background-color: white;
-    border-bottom: 1px solid rgba(0,0,0,.1);
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
-    -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
-  }
+.top-nav-collapse {
+  padding: 0px 20px;
+  background-color: white;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.075);
 }
+
 
 /* Order */
 .orderContainer {
