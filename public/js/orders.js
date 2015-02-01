@@ -77,12 +77,12 @@ $(loginform).on("submit", function(ev){
 		var id1 = document.getElementById("facebookid").innerHTML;
 		if (id1 == facebook_id){
 
-			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-danger delivrButton\" data-target=\"modal\" data-target=\"#delivrModal\">" + buttontext2
+			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-danger delivrButton\" data-toggle=\"modal\" data-target=\"#delivrModal\">" + buttontext2
 			 
 		}
 		else{
 
-			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-success delivrButton\" data-target=\"modal\" data-target=\"#delivrModal\">" + buttontext
+			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-success delivrButton\" data-toggle=\"modal\" data-target=\"#delivrModal\">" + buttontext
 
 		}
 
