@@ -25,7 +25,7 @@
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a href="" class="navbar-brand">// delivr</a>
+          <span class=""><a href="" class="navbar-brand">// delivr</a></span>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle Nav</span>
             <span class="icon-bar"></span>
@@ -38,10 +38,19 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="/">HOME</a></li>
           <% if (!user) { %>
-            <li><a class="btn btn-primary" href="/auth/facebook">SIGN IN</a></li>
+            <li><a class="btn" href="/auth/facebook">SIGN IN</a></li>
           <% } else { %>
             <li><a href="/feed">FEED</a>
-            <li><a href=""> <%= user.displayName %></a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="http://graph.facebook.com/<%= user.id %>/picture" class="profile-image img-circle"> <%= user.displayName %> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <!-- <li><a href="#"><i class="fa fa-cog"></i> Account</a></li>
+                <li class="divider"></li> -->
+                <li><a href="/logout"><i class="fa fa-sign-out"></i> Sign-out</a></li>
+
+              </ul>
+            </li>
           <% } %>
         </ul>
       </div>
@@ -54,7 +63,7 @@
       <br>
       <br>
       <br>
-      <div class="container animated fadeInUp">
+      <div class="banner-inner container animated fadeInUp">
         <h1>Welcome Bruh</h1>
         <p>sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax</p>
         <p>
@@ -66,13 +75,11 @@
     
     <div class="container">
       <div class="row">
-        <button class="btn btn-primary btn-large" onclick="Login()">Login with Facebook</button></div>
-        <div id="status"></div>
 
         <!--left-->
         <div class="col-md-3" id="aboutSections">
           <ul class="nav nav-stacked" id="sidebar">
-            <li><a href="#sec1">Biography</a></li>
+            <li><a href="#sec1">About</a></li>
             <li><a href="#sec2">Features</a></li>
             <li><a href="#sec3">Section 3</a></li>
           </ul>
@@ -178,74 +185,7 @@
       });
 
     </script>
-
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '1396800567290730', // App ID
-          status     : true, // check login status
-          cookie     : true, // enable cookies to allow the server to access the session
-          xfbml      : true  // parse XFBML
-        });
-        };
-     
-      (function(d){
-         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement('script'); js.id = id; js.async = true;
-         js.src = "//connect.facebook.net/en_US/all.js";
-         ref.parentNode.insertBefore(js, ref);
-       }(document));
-
-      function Login()
-      {
-        FB.login(function(response) {
-         if (response.authResponse) 
-         {
-              getUserInfo(); // Get User Information.
-
-          } else
-          {
-           console.log('Authorization failed.');
-          }
-         },{scope: 'email'});
-      }
-
-      function Logout()
-      {
-          FB.logout(function(){document.location.reload();});
-       
-      }
-      function getUserInfo() {
-        FB.api('/me', function(response) {
-          console.log(response.name);
-
- 
-        var str="<b>Name</b> : "+response.name+"<br>";
-            str +="<b>Link: </b>"+response.link+"<br>";
-            str +="<b>Username:</b> "+response.username+"<br>";
-            str +="<b>id: </b>"+response.id+"<br>";
-            str +="<b>Email:</b> "+response.email+"<br>";
-            str +="<input type='button' value='Get Photo' onclick='getPhoto();'/>";
-            str +="<input type='button' value='Logout' onclick='Logout();'/>";
-            document.getElementById("status").innerHTML=str;
-   
-        });
-      }
-
-      // Load the SDK asynchronously
-      (function(d){
-         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement('script'); js.id = id; js.async = true;
-         js.src = "//connect.facebook.net/en_US/all.js";
-         ref.parentNode.insertBefore(js, ref);
-       }(document));
-
-      
-
-     
-    </script>
+    
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>

@@ -46,33 +46,7 @@ $(loginform).on("submit", function(ev){
   });
 });
 
-/*
-function startNewsFeed(){
-	$.ajax({
-		type: "GET",
-		url: "/newsfeed",
-		data: {
-		},
-		success:function(data){
-			console.log(data.length)
-			for (var i = 0; i < data.length; i++){
-				createTable(data[i].Name, data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost);
-			}
-		},
-		xhrFields: {withCredentials: true},
-      		error:function(response2){
-       			console.log("ERROR")
-       		}
-	});
-}
 
-
-function createTable(name, restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
-	var table = $('#appendTable');
-	table.append("<tr><td>" + name + "</td><td>" + restaurant + "</td><td>" + food + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" 
-		+ deliveryFee + "</td><td>" + timeOfPost + "</td></tr>");
-
-}
 
 */
 /*
@@ -190,8 +164,7 @@ function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, tim
 	}
 
 
-//		ordersList.appendChild(document.createElement("br"));
-//		ordersList.appendChild(document.createElement("br"));
+
 
 	
 	

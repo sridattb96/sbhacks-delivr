@@ -14,6 +14,8 @@
     <!-- <link rel="stylesheet" href="css/bootstrap-theme.min.css"> -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    
     <script src="https://cdn.firebase.com/js/client/2.1.2/firebase.js"></script>
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
   </head>
@@ -38,11 +40,22 @@
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="/">HOME</a></li>
-          
+          <% if (!user) { %>
             <li><i class="fa fa-facebook"></i><a class="btn btn-primary btn-small" href="/auth/facebook">Sign In</a></li>
             <li><a href=""> <%= user.displayName %></a></li> 
           
             <li><a href="/feed">FEED</a>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="http://graph.facebook.com/<%= user.id %>/picture" class="profile-image img-circle"> <%= user.displayName %> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <!-- <li><a href="#"><i class="fa fa-cog"></i> Account</a></li>
+                <li class="divider"></li> -->
+                <li><a href="/logout"><i class="fa fa-sign-out"></i> Sign-out</a></li>
+
+              </ul>
+            </li>
+          <% } %>
           
         </ul>
       </div>
