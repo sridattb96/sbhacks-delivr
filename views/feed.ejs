@@ -71,7 +71,7 @@
         <h1>Place Your Order</h1>
         <p>sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax sbhax</p>
         <p>
-          <a class="btn btn-lg btn-default" href="../../components/#navbar" role="button">Learn More &raquo;</a>
+          <a class="btn btn-lg btn-default" href="" role="button">Learn More &raquo;</a>
         </p>
       </div>
     </div>
@@ -92,7 +92,8 @@
         <div class="form-group">
           <label for="inputFood" class="col-sm-2 control-label">Food:</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" id="inputFood" placeholder="Food">
+            <!-- <input type="text" class="form-control" id="inputFood" placeholder="Food"> -->
+            <textarea class="form-control" type="text" rows="3" id="inputFood" placeholder="Food"></textarea>
           </div>
         </div>
         <div class="form-group">
@@ -137,13 +138,11 @@
           <tr>
             <th>Name</th>
             <th>Restaurant</th>
-            <th>Food</th>
             <th>Time Range</th>  
             <th>Location</th>
             <th>Fee</th>
             <th>Time</th>
             <th>Delivr</th>
-            <th>ETA</th>
           </tr>
         </thead>
         <tbody id="appendTable">
@@ -152,6 +151,36 @@
             
         </tbody>
       </table>
+      <!-- Modal -->
+      <div class="modal fade" id="delivrModal" tabindex="-1" role="dialog" aria-labelledby="delivrModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h2 class="modal-title" id="delivrModalLabel">Delivr</h2>
+            </div>
+            <div class="modal-body">
+              <h4>Food</h4>
+              <p id="foodModal"></p>
+              <form>
+                <div class="form-group">
+                  <label for="eta-form">Estimated Time of Arrival</label>
+                  <input type="eta-form" class="form-control" id="eta" placeholder="Enter ETA">
+                </div>
+                <div class="form-group">
+                  <label for="phone-number-form">Contact Info</label>
+                  <input type="phone-number-form" class="form-control" id="phone-number" placeholder="Enter Phone Number">
+                </div>
+              </form>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-success delivrConfirm">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div id="orderTable">
@@ -186,13 +215,13 @@
     <script src="//connect.facebook.net/en_US/all.js"></script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-      <script>
-        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-        e.src='//www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-        ga('create','UA-XXXXX-X');ga('send','pageview');
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>
 
 

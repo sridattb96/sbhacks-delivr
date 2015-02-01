@@ -77,22 +77,19 @@ $(loginform).on("submit", function(ev){
 		var id1 = document.getElementById("facebookid").innerHTML;
 		if (id1 == facebook_id){
 
-			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-danger delivrButton changeSize\">" + buttontext2
+			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-danger delivrButton\" data-target=\"modal\" data-target=\"#delivrModal\">" + buttontext2
 			 
 		}
 		else{
 
-			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-success delivrButton changeSize\">" + buttontext
+			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-success delivrButton\" data-target=\"modal\" data-target=\"#delivrModal\">" + buttontext
 
 		}
 
 		table.append(
 			"<tr><td>" + name + "</td><td>" + restaurant + "</td><td>" + food + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" + "$" 
 			+ deliveryFee + "</td><td><span data-livestamp=\"" + timeOfPost + "\"></span></td><td>" + button);
-		
 
-
-		
 	}
 
 	function sendDeliverInfo(data, myId){
