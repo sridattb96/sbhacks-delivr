@@ -68,8 +68,8 @@ $(loginform).on("submit", function(ev){
 	}
 
 
-		ordersList.appendChild(document.createElement("br"));
-		ordersList.appendChild(document.createElement("br"));
+		// ordersList.appendChild(document.createElement("br"));
+		// ordersList.appendChild(document.createElement("br"));
 
 	
 	
