@@ -41,9 +41,8 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="/">HOME</a></li>
           <% if (!user) { %>
-            <li><i class="fa fa-facebook"></i><a class="btn btn-primary btn-small" href="/auth/facebook">Sign In</a></li>
-            <li><a href=""> <%= user.displayName %></a></li> 
-          
+            <li><i class="fa fa-facebook"></i><a class="btn btn-primary btn-small" href="/auth/facebook">SIGN IN</a></li>
+          <% } else { %>  
             <li><a href="/feed">FEED</a>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -125,8 +124,8 @@
     <hr> 
 
     <div>
-      <span id= "name" style="display:none;"><%= user.displayName%></span>
-      <span id= "facebookid" style="display:none;"><%= user.id%></span>
+      <span id= "name" style="display:none;"><%= user.displayName %></span>
+      <span id= "facebookid" style="display:none;"><%= user.id %></span>
     </div>
 
 

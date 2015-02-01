@@ -17,8 +17,6 @@ function start(){
 	startNewsFeed()
 }
 
-console.log(document.getElementById("name".value))
-
 /*this is where the ajax code for the post request button goes*/
 var loginform = document.getElementById("orderForm");
 $(loginform).on("submit", function(ev){
@@ -48,7 +46,7 @@ $(loginform).on("submit", function(ev){
 
 
 
-*/
+
 /*
 function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
 
@@ -141,8 +139,9 @@ function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, tim
 	}
 
 	function sendDeliverInfo(data, myId){
+		var myName = document.getElementById("name").innerHTML;
 		alert("When can you get " + data[myId].Name + "the food he/she requested?")
-		alert("I, " + document.getElementById("name").value + ", am delivering " + data[myId].Name + " food.");
+		alert("I, " + myName + ", am delivering " + data[myId].Name + " food.");
 		/*
 		$.ajax({
 			type: "POST",
