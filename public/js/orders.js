@@ -105,6 +105,7 @@ $(loginform).on("submit", function(ev){
 				Requester_id: data[myId]._id
 			},
 			success:function(data){
+				console.log(data)
 			},
 			xhrFields: {withCredentials: true},
 			error: function(){
