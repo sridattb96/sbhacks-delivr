@@ -107,6 +107,7 @@ $(loginform).on("submit", function(ev){
 		// console.log(document.getElementById("facebookid"))
 		// button on click button for "submit"
 		$( ".delivrConfirm" ).bind( "click", function() {
+			console.log("delivrConfirm called");
 						
 			
 				$.ajax({
@@ -114,6 +115,7 @@ $(loginform).on("submit", function(ev){
 					url: "/deliveryInfo",
 					data:{
 						NameOfDeliverer: myName,
+						ETA: document.getElementById("eta").value,
 						NameOfRequester: data[myId].Name,
 						Deliverer_id: document.getElementById("facebookid").innerHTML,
 						PhoneNumber: document.getElementById("phone-number").value,
