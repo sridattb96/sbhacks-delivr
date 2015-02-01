@@ -18,6 +18,8 @@
     
     <script src="https://cdn.firebase.com/js/client/2.1.2/firebase.js"></script>
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+    
   </head>
 
   <body class="loginPage" onLoad="start()">
@@ -41,8 +43,13 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="/">HOME</a></li>
           <% if (!user) { %>
+<<<<<<< HEAD
             <li><a class="btn btn-primary btn-small" href="/auth/facebook">SIGN IN</a></li>
           <% } else { %>  
+=======
+            <li><a class="btn btn-small" href="/auth/facebook">SIGN IN</a></li>
+          <% } else { %>
+>>>>>>> fd9337667cdc2b91250a31d621c05c15e658f73d
             <li><a href="/feed">FEED</a>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -128,17 +135,9 @@
       <span id= "facebookid" style="display:none;"><%= user.id %></span>
     </div>
 
-
-    <!-- Order List -->
-    <div class="container">
-      <div id="ordersList">
-      </div>
-
-    </div>
-
     <div class="container">
       <table class="table table-hover">
-        <caption>This is fancy.</caption>
+        <caption>Order List</caption>
         <thead>
           <tr>
             <th>Name</th>
@@ -146,8 +145,10 @@
             <th>Food</th>
             <th>Time Range</th>  
             <th>Location</th>
-            <th>Delivery Fee</th>
+            <th>Fee</th>
             <th>Time</th>
+            <th>Delivr</th>
+            <th>ETA</th>
           </tr>
         </thead>
         <tbody id="appendTable">
@@ -160,17 +161,29 @@
 
     <div id="orderTable">
     </div>  
+    <br>
+    
+    <div id="map-canvas"></div>
+
+    <hr>
+    
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
-
     <script src="js/vendor/bootstrap.min.js"></script>
-
+    <script src="js/vendor/moment.min.js"></script>
+    <script src="js/vendor/livestamp.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="js/orders.js"></script>
+    <!-- jQuery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    <!-- Google Maps -->
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsYxALTDoCG5NPCYTCsy79dpc96a0MMyk">
+    </script>
+    <script src="js/google-maps.js"></script>
 
     <!-- Plugin JavaScript -->
     <script src="js/vendor/jquery.easing.1.3.js"></script>

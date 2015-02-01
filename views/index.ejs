@@ -43,12 +43,11 @@
             <li><a href="/feed">FEED</a>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="http://graph.facebook.com/<%= user.id %>/picture" class="profile-image img-circle"> <%= user.displayName %> <b class="caret"></b></a>
+              <img src="http://graph.facebook.com/<%= user.id %>/picture" class="profile-image img-circle">  <%= user.displayName %> <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <!-- <li><a href="#"><i class="fa fa-cog"></i> Account</a></li>
                 <li class="divider"></li> -->
                 <li><a href="/logout"><i class="fa fa-sign-out"></i> Sign-out</a></li>
-
               </ul>
             </li>
           <% } %>
