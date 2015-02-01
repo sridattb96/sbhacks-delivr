@@ -80,7 +80,14 @@ body {
       background-color: rgba(255,255,255,0);
     }
 
-
+/* Dynamic Elements */
+.profile-image {
+  max-height: 30px;
+  margin-top: -5px;
+  margin-right: 5px;
+   width: auto; 
+  vertical-align: middle;
+}
    
 
 /* Added Classes by jQuery */

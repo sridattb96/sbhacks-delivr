@@ -93,7 +93,7 @@ app.get('/login', function(req, res){
 });
 
 app.get('/feed', function(req, res) {
-  res.render('feed.ejs');
+  res.render('feed.ejs', { user: req.user });
 })
 
 app.post('/post', function(req, res){
