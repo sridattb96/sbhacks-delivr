@@ -70,14 +70,19 @@ $(loginform).on("submit", function(ev){
 	function createTable( request_id, name, restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
 		var table = $('#appendTable');
 		var buttontext = "Delivr";
+		var buttontext2 = "Delete";
 		//var first = name.substring(0, indexOf(' '));
 		//name = first;
 		console.log(timeOfPost);
 
+
+
 		table.append(
-			"<tr><td>" + name + "</td><td>" + restaurant + "</td><td>" + food + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" + "$"
-			+ deliveryFee + "</td><td><span data-livestamp=\"" + timeOfPost + "\"></span></td><td>" + "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-success delivrButton\">" + buttontext + 
-			"</td></tr>");
+			"<tr><td>" + name + "</td><td>" + restaurant + "</td><td>" + food + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" + "$" 
+			+ deliveryFee + "</td><td><span data-livestamp=\"" + timeOfPost + "\"></span></td><td>" + "<button id=\"" + request_id + 
+			"\" type=\"button\" class=\"btn btn-success delivrButton\">" + buttontext + "</td><td>" + "<button id=\"" + request_id + 
+				"\" type=\"button\" class=\"btn btn-danger delivrButton\">" + buttontext2 + "</td></tr>");
+		
 	}
 
 	function sendDeliverInfo(data, myId){
@@ -93,8 +98,8 @@ $(loginform).on("submit", function(ev){
 			type: "POST",
 			url: "http://localhost:5000/deliveryInfo",
 			data:{
-				NameOfDeliverer:myName,
-				NameOfRequester:data[myId].Name,
+				NameOfDeliverer: myName,
+				NameOfRequester: data[myId].Name,
 				ETA: eta,
 				Deliverer_id: document.getElementById("facebookid").value,
 				Requester_id: data[myId]._id
