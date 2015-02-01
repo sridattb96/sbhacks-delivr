@@ -125,12 +125,6 @@ $(loginform).on("submit", function(ev){
 			}
 		});
 	}
-    NSDictionary* first = [NSDictionary dictionaryWithObjectsAndKeys:[AppCommunication sharedCommunicator].fbid, @"Deliverer_id",[AppCommunication sharedCommunicator].fbname, @"NameOfDeliverer",self.time.text,@"ETA", [AppCommunication sharedCommunicator].fbid,@"Requester_id", nil];
-    [[AppCommunication sharedCommunicator] postRequest:@"/deliveryInfo" withInput:first withCompletion:^(NSData *data, NSURLResponse *response, NSError *error) {
-        [[AppCommunication sharedCommunicator].firebase setValue:first];
-        [[AppCommunication sharedCommunicator].firebase removeValue];
-    }];
-
 
 
 
