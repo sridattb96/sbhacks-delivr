@@ -40,6 +40,28 @@ $(function() {
 				$( ".delivrButton" ).bind( "click", function() {
 					var myId = this.id;
 					alert(myId);
+/*
+					//pop up form after delivr click 
+					$(delivrForm).on("submit", function(ev){
+	
+					$.ajax({
+						type: "POST",
+						url: "http://localhost:5000/newsfeed"
+						data:{
+							DelivrName: guy who delivers facebook name??,
+							RequesterName: guy who requests facebook name??,
+							ETA: document.getElementById("inputETA").value
+						},
+						success:function(data){
+						},
+						xhrFields: {withCredentials: true},
+						error: function(){
+							console.log("ERROR")
+						}
+					});
+
+
+*/		
 				});
 			},
 			xhrFields: {withCredentials: true},
