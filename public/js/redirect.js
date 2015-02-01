@@ -10,16 +10,8 @@ function statusChangeCallback(response) {
   if (response.status === 'connected') {
     // Logged into your app and Facebook.
 
-    window.location.href="/login";
-    // $.ajax({
-    //   url: 'http://localhost:5000/login',
-    //   type: 'GET',
-    //   data: {"name" : response.name },
-    //   success: function() {
-    //     window.location.href="/login";
-
-    //   }
-    // })
+    window.location.href="/feed";
+    
     testAPI();
   } else if (response.status === 'not_authorized') {
     // The person is logged into Facebook, but not your app.
