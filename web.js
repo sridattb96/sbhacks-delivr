@@ -171,6 +171,15 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
+app.delete('/delete/post', function(req, res) {
+  var collection = db.collection("userPosts")
+
+  collection.removeById(req.body.theid, function(e, result){
+    res.send(result)
+  })
+
+})
+
 var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {});
 

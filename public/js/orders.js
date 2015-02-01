@@ -52,12 +52,16 @@ $(loginform).on("submit", function(ev){
 			},
 			success:function(data){
 				for (var i = 0; i < data.length; i++) {
-					createTable( data[i].Facebook_id, i, data[i].Name, data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost);
+					createTable( data[i].Facebook_id, i, data[i].Name, data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost, data[i]._id);
 				}
 
-				$( ".delivrButton" ).bind( "click", function() {
+				$( ".take-post" ).bind( "click", function() {
 					var myId = this.id;
 					sendDeliverInfo(data, myId);		
+				});
+				$( ".delete-post" ).bind( "click", function() {
+					var myId = this.id;
+					deleteInfo(data, myId);		
 				});
 			},
 			xhrFields: {withCredentials: true},
@@ -67,7 +71,7 @@ $(loginform).on("submit", function(ev){
 		});
 	}
 
-	function createTable( facebook_id, request_id, name, restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
+	function createTable( facebook_id, request_id, name, restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost, uni_id){
 		var table = $('#appendTable');
 		var buttontext = "Delivr";
 		var buttontext2 = "Delete";
@@ -77,18 +81,18 @@ $(loginform).on("submit", function(ev){
 		var id1 = document.getElementById("facebookid").innerHTML;
 		if (id1 == facebook_id){
 
-			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-danger delivrButton\" data-toggle=\"modal\" data-target=\"#delivrModal\">" + buttontext2
+			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"delete-post btn btn-danger delivrButton\">" + buttontext2
 			 
 		}
 		else{
 
-			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-success delivrButton\" data-toggle=\"modal\" data-target=\"#delivrModal\">" + buttontext
+			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"take-post btn btn-success delivrButton\" data-toggle=\"modal\" data-target=\"#delivrModal\">" + buttontext
 
 		}
 
 		table.append(
-			"<tr><td>" + name + "</td><td>" + restaurant + "</td><td>" + food + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" + "$" 
-			+ deliveryFee + "</td><td><span data-livestamp=\"" + timeOfPost + "\"></span></td><td>" + button);
+			"<tr id=\""+"table-"+uni_id+"\"><td>" + name + "</td><td>" + restaurant + "</td><td>" + food + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" + "$" 
+			+ deliveryFee + "</td><td><span data-livestamp=\"" + timeOfPost + "\"></span></td><td>" + button+ "</td></tr>");
 
 	}
 
@@ -113,6 +117,34 @@ $(loginform).on("submit", function(ev){
 				Requester_id: data[myId]._id
 			},
 			success:function(data){
+			},
+			xhrFields: {withCredentials: true},
+			error: function(){
+				console.log("ERROR")
+			}
+		});
+	}
+
+
+	function deleteInfo(data, myId){
+		var myName = document.getElementById("name").innerHTML;
+		// var eta = 35;
+		// alert("You: " + myName + " Requester: " + data[myId].Name);
+		// console.log(myName)
+		// console.log(data[id].Name)
+		// console.log(eta)
+		// console.log(document.getElementById("facebookid"))
+		// button on click button for "submit"
+		$.ajax({
+			type: "DELETE",
+			url: "/delete/post",
+			data:{
+				theid: data[myId]._id,
+				index: myId
+			},
+			success:function(data){
+				console.log(data._id)
+				document.getElementById("table-"+data._id).html("")
 			},
 			xhrFields: {withCredentials: true},
 			error: function(){

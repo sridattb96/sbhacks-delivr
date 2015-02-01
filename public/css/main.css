@@ -86,7 +86,7 @@ body {
 /* Inner Banners */
 div.banner-inner {
   color: white;
-  background-color: rgba(131, 114, 114, 0.4);
+  background-color: rgba(131, 114, 114, 0.3);
   padding: 20px 30px;
   position: relative;
   
@@ -94,15 +94,27 @@ div.banner-inner {
   width:60%;
 }
   div.banner-inner h1 {
-    color: rgb(50, 46, 46);
+    color: rgb(34, 33, 37);
+    border-bottom: 2px solid black;
+    letter-spacing: 0.5px;
+
   }
   div.banner-inner p {
     color: rgb(65, 65, 65);
+    letter-spacing: 0.3px;
   }
 
 div.banner-inner2 {
   color: white;
+  background-color: rgba(255,255,255,0.0);
 }
+  div.banner-inner2 h1 {
+    color: white;
+    border-bottom: 2px solid white;
+    letter-spacing: 0.5px;
+
+  }
+
 
 /* Dynamic Elements */
 .profile-image {
