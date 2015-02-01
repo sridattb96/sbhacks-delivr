@@ -111,7 +111,7 @@ $(loginform).on("submit", function(ev){
 			data:{
 				NameOfDeliverer: myName,
 				NameOfRequester: data[myId].Name,
-				ETA: document.getElementById(eta).value,
+				ETA: 10,
 				Deliverer_id: document.getElementById("facebookid").value,
 				PhoneNumber: document.getElementById("phone-number").value,
 				Requester_id: data[myId]._id
