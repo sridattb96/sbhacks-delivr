@@ -188,6 +188,12 @@ a.nav-btn {
     text-decoration: none;
     border: none;
   }
+
+  .points {
+    font-size: 100px;
+    overflow: hidden;
+    
+  }
   
 
 
