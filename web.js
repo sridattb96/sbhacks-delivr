@@ -93,7 +93,7 @@ app.get('/login', function(req, res){
 });
 
 app.get('/feed', function(req, res) {
-  res.render('feed.ejs', { user: req.user });
+  res.render('feed.ejs', { user : req.user });
 })
 
 app.post('/post', function(req, res){
@@ -111,12 +111,32 @@ app.post('/post', function(req, res){
 		}
 	});
 });
+
+app.post('/deliveryInfo', function(req, res){
+	var col = db.collection("deliveryInfo")
+	col.insert(req.body), {}, function(e, results){
+		if (e){
+			res.status(500).send()
+		}
+		else{
+			res.send(results)
+		}
+	}
+});
+
+app.get('/getDeliveryInfo', function(req,res){
+	var col = db.collection("deliveryInfo")
+	col.find().toArray(function(e, results){
+		res.send(results);
+	});
+});
+
 app.get('/newsfeedpage', function(req,res){
 	res.render('newsfeed.ejs');
 })
+
 app.get('/newsfeed', function(req,res){
 	var col = db.collection("userPosts")
-
 	col.find().toArray(function(e, results){
 		res.send(results);
 	});

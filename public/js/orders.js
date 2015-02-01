@@ -36,8 +36,6 @@ $(loginform).on("submit", function(ev){
     },
     success:function(response1){
       window.location.reload();
-
-       
     },
     xhrFields: {withCredentials: true},
     error:function(response2){
@@ -54,12 +52,12 @@ $(loginform).on("submit", function(ev){
 			},
 			success:function(data){
 				for (var i = 0; i < data.length; i++) {
-					createTable( i, data[i].Name, data[i]Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost);
+					createTable( i, data[i].Name, data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost);
 				}
 
 				$( ".delivrButton" ).bind( "click", function() {
 					var myId = this.id;
-					alert(myId);
+					sendDeliverInfo(data, myId);		
 				});
 			},
 			xhrFields: {withCredentials: true},
@@ -79,9 +77,36 @@ $(loginform).on("submit", function(ev){
 
 	}
 
+	function sendDeliverInfo(data, myId){
+		var myName = document.getElementById("name").innerHTML;
+		var eta = 35;
+		// console.log(myName)
+		// console.log(data[id].Name)
+		// console.log(eta)
+		// console.log(document.getElementById("facebookid"))
+		// button on click button for "submit"
+		$.ajax({
+			type: "POST",
+			url: "http://localhost:5000/deliveryInfo",
+			data:{
+				NameOfDeliverer:myName,
+				NameOfRequester:data[myId].Name,
+				ETA: eta,
+				Deliverer_id: document.getElementById("facebookid").value,
+				Requester_id: data[myId]._id
+			},
+			success:function(data){
+			},
+			xhrFields: {withCredentials: true},
+			error: function(){
+				console.log("ERROR")
+			}
+		});
 
-		// ordersList.appendChild(document.createElement("br"));
-		// ordersList.appendChild(document.createElement("br"));
+	}
+
+
+
 
 	
 	

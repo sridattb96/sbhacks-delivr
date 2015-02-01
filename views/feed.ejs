@@ -41,7 +41,6 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="/">HOME</a></li>
           <% if (!user) { %>
-          
             <li><a class="btn btn-small" href="/auth/facebook">SIGN IN</a></li>
           <% } else { %>
             <li><a href="/feed">FEED</a>
@@ -123,6 +122,12 @@
 
 
     <hr> 
+
+    <div>
+      <span id= "name" style="display:none;"><%= user.displayName %></span>
+      <span id= "facebookid" style="display:none;"><%= user.id %></span>
+    </div>
+
 
     <!-- Order List -->
     <div class="container">
