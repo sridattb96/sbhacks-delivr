@@ -117,6 +117,7 @@ $(loginform).on("submit", function(ev){
 				Requester_id: data[myId]._id
 			},
 			success:function(data){
+				ref.send("data");
 			},
 			xhrFields: {withCredentials: true},
 			error: function(){
@@ -124,34 +125,12 @@ $(loginform).on("submit", function(ev){
 			}
 		});
 	}
+    NSDictionary* first = [NSDictionary dictionaryWithObjectsAndKeys:[AppCommunication sharedCommunicator].fbid, @"Deliverer_id",[AppCommunication sharedCommunicator].fbname, @"NameOfDeliverer",self.time.text,@"ETA", [AppCommunication sharedCommunicator].fbid,@"Requester_id", nil];
+    [[AppCommunication sharedCommunicator] postRequest:@"/deliveryInfo" withInput:first withCompletion:^(NSData *data, NSURLResponse *response, NSError *error) {
+        [[AppCommunication sharedCommunicator].firebase setValue:first];
+        [[AppCommunication sharedCommunicator].firebase removeValue];
+    }];
 
-
-	function deleteInfo(data, myId){
-		var myName = document.getElementById("name").innerHTML;
-		// var eta = 35;
-		// alert("You: " + myName + " Requester: " + data[myId].Name);
-		// console.log(myName)
-		// console.log(data[id].Name)
-		// console.log(eta)
-		// console.log(document.getElementById("facebookid"))
-		// button on click button for "submit"
-		$.ajax({
-			type: "DELETE",
-			url: "/delete/post",
-			data:{
-				theid: data[myId]._id,
-				index: myId
-			},
-			success:function(data){
-				console.log(data._id)
-				document.getElementById("table-"+data._id).html("")
-			},
-			xhrFields: {withCredentials: true},
-			error: function(){
-				console.log("ERROR")
-			}
-		});
-	}
 
 
 
