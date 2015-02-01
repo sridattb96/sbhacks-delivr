@@ -47,7 +47,7 @@ $(loginform).on("submit", function(ev){
 	function startNewsFeed(){
 		$.ajax({
 			type: "GET",
-			url: "http://localhost:5000/newsfeed",
+			url: "/newsfeed",
 			data: {
 			},
 			success:function(data){
@@ -77,12 +77,12 @@ $(loginform).on("submit", function(ev){
 		var id1 = document.getElementById("facebookid").innerHTML;
 		if (id1 == facebook_id){
 
-			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-danger delivrButton\" data-target=\"modal\" data-target=\"#delivrModal\">" + buttontext2
+			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-danger delivrButton\" data-toggle=\"modal\" data-target=\"#delivrModal\">" + buttontext2
 			 
 		}
 		else{
 
-			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-success delivrButton\" data-target=\"modal\" data-target=\"#delivrModal\">" + buttontext
+			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-success delivrButton\" data-toggle=\"modal\" data-target=\"#delivrModal\">" + buttontext
 
 		}
 
@@ -94,8 +94,8 @@ $(loginform).on("submit", function(ev){
 
 	function sendDeliverInfo(data, myId){
 		var myName = document.getElementById("name").innerHTML;
-		var eta = 35;
-		alert("You: " + myName + " Requester: " + data[myId].Name);
+		// var eta = 35;
+		// alert("You: " + myName + " Requester: " + data[myId].Name);
 		// console.log(myName)
 		// console.log(data[id].Name)
 		// console.log(eta)
@@ -103,12 +103,13 @@ $(loginform).on("submit", function(ev){
 		// button on click button for "submit"
 		$.ajax({
 			type: "POST",
-			url: "http://localhost:5000/deliveryInfo",
+			url: "/deliveryInfo",
 			data:{
 				NameOfDeliverer: myName,
 				NameOfRequester: data[myId].Name,
-				ETA: eta,
+				ETA: document.getElementById(eta).value,
 				Deliverer_id: document.getElementById("facebookid").value,
+				PhoneNumber: document.getElementById("phone-number").value,
 				Requester_id: data[myId]._id
 			},
 			success:function(data){
@@ -119,6 +120,7 @@ $(loginform).on("submit", function(ev){
 			}
 		});
 	}
+
 
 
 
