@@ -51,19 +51,19 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="inputFood" class="col-sm-2 control-label">Food:</label>
+          <label for="inputFood" class="col-sm-2 control-label"></label>
           <div class="col-sm-6">
             <input type="text" class="form-control" id="inputFood" placeholder="Food">
           </div>
         </div>
         <div class="form-group">
-          <label for="inputTimeRange" class="col-sm-2 control-label">Time Range:</label>
+          <label for="inputTimeRange" class="col-sm-2 control-label"></label>
           <div class="col-sm-6">
             <input type="text" class="form-control" id="inputTimeRange" placeholder="Time Range">
           </div>
         </div>
         <div class="form-group">
-          <label for="inputMyLocation" class="col-sm-2 control-label">Location:</label>
+          <label for="inputMyLocation" class="col-sm-2 control-label"><%= user.displayName %></label>
           <div class="col-sm-6">
             <input type="text" class="form-control" id="inputMyLocation" placeholder="Location">
           </div>
@@ -79,6 +79,7 @@
             <button type="submit" class="btn btn-success">Post Request</button>
           </div>
         </div>
+
 <!--
        <div class="alert alert-danger" role="alert">
         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -89,7 +90,14 @@
       </form>
     </div> <!--/container-->
 
-       
+
+    <!-- <div class="container">
+      <p id ="name"><%= user.displayName %></p>
+      <p id ="facebookid"><%= user.id %></p>    
+    </div> -->
+
+    
+
         <!-- Google Maps   <script src="http://maps.googleapis.com/maps/api/js"></script>
         <script>
         function initialize() {

@@ -40,6 +40,7 @@
           <li class="active"><a href="/">HOME</a></li>
           
             <li><i class="fa fa-facebook"></i><a class="btn btn-primary btn-small" href="/auth/facebook">Sign In</a></li>
+            <li><a href=""> <%= user.displayName %></a></li> 
           
             <li><a href="/feed">FEED</a>
           
@@ -109,6 +110,12 @@
 
 
     <hr> 
+
+    <div>
+      <span id= "name" style="display:none;"><%= user.displayName%></span>
+      <span id= "facebookid" style="display:none;"><%= user.id%></span>
+    </div>
+
 
     <!-- Order List -->
     <div class="container">

@@ -17,6 +17,8 @@ function start(){
 	startNewsFeed()
 }
 
+console.log(document.getElementById("name".value))
+
 /*this is where the ajax code for the post request button goes*/
 var loginform = document.getElementById("orderForm");
 $(loginform).on("submit", function(ev){
@@ -26,7 +28,8 @@ $(loginform).on("submit", function(ev){
     type: "POST",
     url: "/post",
     data:{
-    	
+      Name: document.getElementById("name").innerHTML,
+      Facebook_id: document.getElementById("facebookid").innerHTML,
       Restaurant:document.getElementById("inputRestaurant").value,
       Food:document.getElementById("inputFood").value,
       TimeRange:document.getElementById("inputTimeRange").value,
@@ -35,8 +38,6 @@ $(loginform).on("submit", function(ev){
     },
     success:function(response1){
       window.location.reload();
-
-       
     },
     xhrFields: {withCredentials: true},
     error:function(response2){
@@ -45,7 +46,7 @@ $(loginform).on("submit", function(ev){
   });
 });
 
-
+/*
 function startNewsFeed(){
 	$.ajax({
 		type: "GET",
@@ -55,9 +56,8 @@ function startNewsFeed(){
 		success:function(data){
 			console.log(data.length)
 			for (var i = 0; i < data.length; i++){
-			createTable(data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost);
+				createTable(data[i].Name, data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost);
 			}
-			console.log(data[i].Restaurant);
 		},
 		xhrFields: {withCredentials: true},
       		error:function(response2){
@@ -67,17 +67,15 @@ function startNewsFeed(){
 }
 
 
-function createTable(restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
+function createTable(name, restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
 	var table = $('#appendTable');
-	table.append("<tr><td>Chang Bhamidipati</td><td>" + restaurant + "</td><td>" + food + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" 
+	table.append("<tr><td>" + name + "</td><td>" + restaurant + "</td><td>" + food + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" 
 		+ deliveryFee + "</td><td>" + timeOfPost + "</td></tr>");
-
-
 
 }
 
-
-
+*/
+/*
 function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
 
 	var ordersList = document.getElementById("ordersList")
@@ -110,7 +108,7 @@ function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, tim
 	myLocationElement.innerHTML = "Location: " + myLocation;
 	ordersList.appendChild(myLocationElement);
 }
-
+*/
 
 	function startNewsFeed(){
 		$.ajax({
@@ -120,13 +118,13 @@ function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, tim
 			},
 			success:function(data){
 				for (var i = 0; i < data.length; i++) {
-					createTable( i, data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost);
+					createTable( i, data[i].Name, data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost);
 				}
 
 				$( ".delivrButton" ).bind( "click", function() {
 					var myId = this.id;
-					alert(myId);
-/*
+					sendDeliverInfo(data, myId);
+/*					
 					//pop up form after delivr click 
 					$(delivrForm).on("submit", function(ev){
 	
@@ -157,9 +155,9 @@ function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, tim
 		});
 	}
 
-	function createTable( request_id, restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
+	function createTable( request_id, name, restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
 		var table = $('#appendTable');
-		var name = "ChangMikeSridatt";
+		//var name = "ChangMikeSridatt";
 		var buttontext = "Delivr";
 
 		table.append(
@@ -168,9 +166,32 @@ function createRequest(restaurant, food, timeRange, myLocation, deliveryFee, tim
 
 	}
 
+	function sendDeliverInfo(data, myId){
+		alert("When can you get " + data[myId].Name + "the food he/she requested?")
+		alert("I, " + document.getElementById("name").value + ", am delivering " + data[myId].Name + " food.");
+		/*
+		$.ajax({
+			type: "POST",
+			url: "http://localhost:5000/newsfeed"
+			data:{
+				DelivrName: document.getElementById("name").value
+				RequesterName: data[myId].Name,
+				ETA: document.getElementById("inputETA").value
+			},
+			success:function(data){
+			},
+			xhrFields: {withCredentials: true},
+			error: function(){
+				console.log("ERROR")
+			}
+		});
+		*/
 
-		ordersList.appendChild(document.createElement("br"));
-		ordersList.appendChild(document.createElement("br"));
+	}
+
+
+//		ordersList.appendChild(document.createElement("br"));
+//		ordersList.appendChild(document.createElement("br"));
 
 	
 	
