@@ -119,7 +119,7 @@ app.post('/deliveryInfo', function(req, res){
 			res.status(500).send()
 		}
 		else{
-			console.log("got here");
+			console.log(req.body);
 			res.send(req.body)
 		}
 	});
