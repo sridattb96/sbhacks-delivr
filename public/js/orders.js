@@ -33,6 +33,7 @@ $(loginform).on("submit", function(ev){
       TimeRange:document.getElementById("inputTimeRange").value,
       MyLocation:document.getElementById("inputMyLocation").value,
       DeliveryFee:document.getElementById("inputDeliveryPrice").value,
+
     },
     success:function(response1){
       window.location.reload();
@@ -55,7 +56,7 @@ $(loginform).on("submit", function(ev){
 					createTable( data[i].Facebook_id, i, data[i].Name, data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost, data[i]._id);
 				}
 
-				$( ".take-post" ).bind( "click", function() {
+				$( ".delivrButton" ).bind( "click", function() {
 					var myId = this.id;
 					sendDeliverInfo(data, myId);		
 				});
@@ -81,12 +82,12 @@ $(loginform).on("submit", function(ev){
 		var id1 = document.getElementById("facebookid").innerHTML;
 		if (id1 == facebook_id){
 
-			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"delete-post btn btn-danger delivrButton\">" + buttontext2
+			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"delete-post btn btn-danger changeSize\">" + buttontext2
 			 
 		}
 		else{
 
-			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"take-post btn btn-success delivrButton\" data-toggle=\"modal\" data-target=\"#delivrModal\">" + buttontext
+			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"changeSize btn btn-success delivrButton\" data-toggle=\"modal\" data-target=\"#delivrModal\">" + buttontext
 
 		}
 
@@ -105,24 +106,28 @@ $(loginform).on("submit", function(ev){
 		// console.log(eta)
 		// console.log(document.getElementById("facebookid"))
 		// button on click button for "submit"
-		$.ajax({
-			type: "POST",
-			url: "/deliveryInfo",
-			data:{
-				NameOfDeliverer: myName,
-				NameOfRequester: data[myId].Name,
-				ETA: document.getElementById(eta).value,
-				Deliverer_id: document.getElementById("facebookid").value,
-				PhoneNumber: document.getElementById("phone-number").value,
-				Requester_id: data[myId]._id
-			},
-			success:function(data){
-			},
-			xhrFields: {withCredentials: true},
-			error: function(){
-				console.log("ERROR")
-			}
-		});
+		$( ".delivrConfirm" ).bind( "click", function() {
+						
+			
+				$.ajax({
+					type: "POST",
+					url: "/deliveryInfo",
+					data:{
+						NameOfDeliverer: myName,
+						NameOfRequester: data[myId].Name,
+						Deliverer_id: document.getElementById("facebookid").innerHTML,
+						PhoneNumber: document.getElementById("phone-number").value,
+						Requester_id: data[myId].Facebook_id
+					},
+					success:function(data){
+						ref.set(data);
+					},
+					xhrFields: {withCredentials: true},
+					error: function(){
+						console.log("ERROR")
+					}
+				});
+			});
 	}
 
 
