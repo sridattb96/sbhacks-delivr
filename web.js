@@ -65,7 +65,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:5000/auth/facebook/callback"
+    callbackURL: "/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
@@ -114,14 +114,15 @@ app.post('/post', function(req, res){
 
 app.post('/deliveryInfo', function(req, res){
 	var col = db.collection("deliveryInfo")
-	col.insert(req.body), {}, function(e, results){
+	col.insert(req.body, {}, function(e, results){
 		if (e){
 			res.status(500).send()
 		}
 		else{
+			console.log("got here");
 			res.send(results)
 		}
-	}
+	});
 });
 
 app.get('/getDeliveryInfo', function(req,res){

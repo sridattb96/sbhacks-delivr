@@ -47,7 +47,7 @@ $(loginform).on("submit", function(ev){
 	function startNewsFeed(){
 		$.ajax({
 			type: "GET",
-			url: "http://localhost:5000/newsfeed",
+			url: "/newsfeed",
 			data: {
 			},
 			success:function(data){
@@ -79,19 +79,22 @@ $(loginform).on("submit", function(ev){
 			+ deliveryFee + "</td><td><span data-livestamp=\"" + timeOfPost + "\"></span></td><td>" + "<button id=\"" + request_id + 
 			"\" type=\"button\" class=\"btn btn-success delivrButton\" data-toggle=\"modal\" data-target=\"#delivrModal\">" 
 			+ buttontext + "</td></tr>");
-
+		
 	}
 
 
 
 	function sendDeliverInfo(data, myId){
 		var myName = document.getElementById("name").innerHTML;
+
 		$('#foodModal').html(data[myId].Food);
+
 		// console.log(myName)
 		// console.log(data[id].Name)
 		// console.log(eta)
 		// console.log(document.getElementById("facebookid"))
 		// button on click button for "submit"
+
 		console.log(data[myId].Name)
 		$(".delivrConfirm" ).bind( "click", function() {
 			//var myId = this.id;
@@ -120,7 +123,6 @@ $(loginform).on("submit", function(ev){
 		});
 		
 
-	}
 
 
 
