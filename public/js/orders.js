@@ -55,7 +55,9 @@ $(loginform).on("submit", function(ev){
 					createTable( i, data[i].Name, data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost);
 				}
 
-				$( ".delivrButton" ).bind( "click", function() {
+
+
+				$(".delivrButton" ).bind( "click", function() {
 					var myId = this.id;
 					sendDeliverInfo(data, myId);		
 				});
@@ -70,39 +72,53 @@ $(loginform).on("submit", function(ev){
 	function createTable( request_id, name, restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
 		var table = $('#appendTable');
 		var buttontext = "Delivr";
+		
 
 		table.append(
-			"<tr><td>" + name + "</td><td>" + restaurant + "</td><td>" + food + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" 
-			+ deliveryFee + "</td><td><span data-livestamp=\"" + timeOfPost + "\"></span></td><td>" + "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-success delivrButton\">" + buttontext + 
-			"</td></tr>");
+			"<tr><td>" + name + "</td><td>" + restaurant + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" 
+			+ deliveryFee + "</td><td><span data-livestamp=\"" + timeOfPost + "\"></span></td><td>" + "<button id=\"" + request_id + 
+			"\" type=\"button\" class=\"btn btn-success delivrButton\" data-toggle=\"modal\" data-target=\"#delivrModal\">" 
+			+ buttontext + "</td></tr>");
 
 	}
 
+
+
 	function sendDeliverInfo(data, myId){
 		var myName = document.getElementById("name").innerHTML;
-		var eta = 35;
+		$('#foodModal').html(data[myId].Food);
 		// console.log(myName)
 		// console.log(data[id].Name)
 		// console.log(eta)
 		// console.log(document.getElementById("facebookid"))
 		// button on click button for "submit"
-		$.ajax({
-			type: "POST",
-			url: "http://localhost:5000/deliveryInfo",
-			data:{
-				NameOfDeliverer:myName,
-				NameOfRequester:data[myId].Name,
-				ETA: eta,
-				Deliverer_id: document.getElementById("facebookid").value,
-				Requester_id: data[myId]._id
-			},
-			success:function(data){
-			},
-			xhrFields: {withCredentials: true},
-			error: function(){
-				console.log("ERROR")
-			}
+		console.log(data[myId].Name)
+		$(".delivrConfirm" ).bind( "click", function() {
+			//var myId = this.id;
+
+			// console.log(myName);
+			console.log(myId);
+			console.log(data[myId].Name)
+			$.ajax({
+				type: "POST",
+				url: "/deliveryInfo",
+				data:{
+					NameOfDeliverer: myName,
+					NameOfRequester: data[myId].Name,
+					ETA: document.getElementById('eta').value,
+					Deliverer_id: document.getElementById("facebookid").value,
+					Requester_id: data[myId]._id
+				},
+				success:function(data){
+				},
+				xhrFields: {withCredentials: true},
+				error: function(){
+					console.log("ERROR")
+				}
+			});
+					
 		});
+		
 
 	}
 
