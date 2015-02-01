@@ -52,7 +52,7 @@ $(loginform).on("submit", function(ev){
 			},
 			success:function(data){
 				for (var i = 0; i < data.length; i++) {
-					createTable( i, data[i].Name, data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost);
+					createTable( data[i].Facebook_id, i, data[i].Name, data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost);
 				}
 
 				$( ".delivrButton" ).bind( "click", function() {
@@ -67,21 +67,31 @@ $(loginform).on("submit", function(ev){
 		});
 	}
 
-	function createTable( request_id, name, restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
+	function createTable( facebook_id, request_id, name, restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost){
 		var table = $('#appendTable');
 		var buttontext = "Delivr";
 		var buttontext2 = "Delete";
 		//var first = name.substring(0, indexOf(' '));
 		//name = first;
-		console.log(timeOfPost);
+		var button = ""
+		var id1 = document.getElementById("facebookid").innerHTML;
+		if (id1 == facebook_id){
 
+			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-danger delivrButton changeSize\">" + buttontext2
+			 
+		}
+		else{
 
+			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"btn btn-success delivrButton changeSize\">" + buttontext
+
+		}
 
 		table.append(
 			"<tr><td>" + name + "</td><td>" + restaurant + "</td><td>" + food + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" + "$" 
-			+ deliveryFee + "</td><td><span data-livestamp=\"" + timeOfPost + "\"></span></td><td>" + "<button id=\"" + request_id + 
-			"\" type=\"button\" class=\"btn btn-success delivrButton\">" + buttontext + "</td><td>" + "<button id=\"" + request_id + 
-				"\" type=\"button\" class=\"btn btn-danger delivrButton\">" + buttontext2 + "</td></tr>");
+			+ deliveryFee + "</td><td><span data-livestamp=\"" + timeOfPost + "\"></span></td><td>" + button);
+		
+
+
 		
 	}
 
