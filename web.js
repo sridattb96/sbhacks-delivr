@@ -65,7 +65,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:5000/auth/facebook/callback"
+    callbackURL: "/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...

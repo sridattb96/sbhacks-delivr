@@ -47,7 +47,7 @@ $(loginform).on("submit", function(ev){
 	function startNewsFeed(){
 		$.ajax({
 			type: "GET",
-			url: "http://localhost:5000/newsfeed",
+			url: "/newsfeed",
 			data: {
 			},
 			success:function(data){
@@ -96,7 +96,7 @@ $(loginform).on("submit", function(ev){
 		// button on click button for "submit"
 		$.ajax({
 			type: "POST",
-			url: "http://localhost:5000/deliveryInfo",
+			url: "/deliveryInfo",
 			data:{
 				NameOfDeliverer: myName,
 				NameOfRequester: data[myId].Name,
