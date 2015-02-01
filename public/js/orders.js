@@ -58,6 +58,8 @@ $(loginform).on("submit", function(ev){
 
 				$( ".delivrButton" ).bind( "click", function() {
 					var myId = this.id;
+					$('#foodModal').html(data[myId].Food);
+					console.log("gime food");
 					sendDeliverInfo(data, myId);		
 				});
 				$( ".delete-post" ).bind( "click", function() {
