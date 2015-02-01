@@ -117,7 +117,8 @@ $(loginform).on("submit", function(ev){
 				Requester_id: data[myId]._id
 			},
 			success:function(data){
-
+				var ref = new Firebase("https://sbhacks2015.firebaseio.com/");
+				ref.send(data);
 			},
 			xhrFields: {withCredentials: true},
 			error: function(){
