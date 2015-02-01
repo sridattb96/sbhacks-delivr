@@ -1,7 +1,20 @@
+var ref 
+function startFireBase(){
+	ref = new Firebase("https://sbhacks2015.firebaseio.com/");
+	// Attach an asynchronous callback to read the data at our posts reference
+	ref.on("value", function(snapshot) {
+		  console.log(snapshot.val());
+		}, function (errorObject) {
+		  console.log("The read failed: " + errorObject.code);
+		});
 
+	ref.set("meow");
 
-
-
+}
+function start(){
+	startFireBase()
+	startNewsFeed()
+}
 /*this is where the ajax code for the post request button goes*/
 var loginform = document.getElementById("orderForm");
 $(loginform).on("submit", function(ev){
