@@ -121,6 +121,7 @@ $(loginform).on("submit", function(ev){
 			});
 					
 		});
+	}
 		
 
 
