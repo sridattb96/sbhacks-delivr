@@ -94,7 +94,7 @@ $(loginform).on("submit", function(ev){
 		}
 
 		table.append(
-			"<tr id=\""+"table-"+uni_id+"\"><td>" + name + "</td><td>" + restaurant + "</td><td>" + food + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" + "$" 
+			"<tr id=\""+"table-"+uni_id+"\"><td>" + name + "</td><td>" + restaurant + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" + "$" 
 			+ deliveryFee + "</td><td><span data-livestamp=\"" + timeOfPost + "\"></span></td><td>" + button+ "</td></tr>");
 
 	}
