@@ -60,8 +60,8 @@ $(loginform).on("submit", function(ev){
 					var myId = this.id;
 					$('#foodModal').html(data[myId].Food);
 					console.log("gime food");
-					deleteInfo(data, myId);
-					sendDeliverInfo(data, myId);		
+					sendDeliverInfo(data, myId);	
+					deleteInfo(data, myId);	
 				});
 				$( ".delete-post" ).bind( "click", function() {
 					var myId = this.id;
@@ -100,16 +100,21 @@ $(loginform).on("submit", function(ev){
 			data: {
 			},
 			success:function(data){
+				var req = 0;
+				var del = 0;
 				for (var i = 0; i < data.length; i++) {
-					
+
 					if (myID == data[i].Requester_id) {
+						req++;
 						$('#requestsTable').append(
+
 							"<tr><td>" + data[i].NameOfRequester + "</td><td>" + data[i].Requester_id + "</td><td>" + data[i].NameOfDeliverer + "</td><td>" + data[i].Deliverer_id + "</td></tr>"
 						);
 
 					}
 
 					if (myID == data[i].Deliverer_id) {
+						del++; 
 
 						$('#deliveriesTable').append(
 							"<tr><td>" + data[i].NameOfRequester + "</td><td>" + data[i].Requester_id + "</td><td>" + data[i].NameOfDeliverer + "</td><td>" + data[i].Deliverer_id + "</td></tr>"
@@ -117,6 +122,8 @@ $(loginform).on("submit", function(ev){
 					}
 				}
 
+				$('#requestsCount').html(req);
+				$('#deliveriesCount').html(del);
 			}
 		});
 
@@ -155,8 +162,10 @@ $(loginform).on("submit", function(ev){
 	function sendDeliverInfo(data, myId){
 		var myName = document.getElementById("name").innerHTML;
 
+
 		$( ".delivrConfirm" ).bind( "click", function() {
-			console.log("delivrConfirm called");
+			// console.log("delivrConfirm called");
+
 						
 				$.ajax({
 					type: "POST",
@@ -177,6 +186,8 @@ $(loginform).on("submit", function(ev){
 						console.log("ERROR")
 					}
 				});
+
+			
 			});
 	}
 
@@ -200,6 +211,8 @@ $(loginform).on("submit", function(ev){
 				console.log("ERROR")
 			}
 		});
+
+
 	}
 
 
