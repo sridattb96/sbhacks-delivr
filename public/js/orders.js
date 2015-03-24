@@ -68,11 +68,41 @@ $(loginform).on("submit", function(ev){
 				});
 			},
 			xhrFields: {withCredentials: true},
-	      		error:function(response2){
-	       			console.log("ERROR")
-	       		}
+    		error:function(response2){
+     			console.log("ERROR")
+     		}
+		});
+
+		var myID = document.getElementById("facebookid").innerHTML; 
+
+		$.ajax({
+			type: "GET", 
+			url: "/getDeliveryInfo",
+			data: {
+			},
+			success:function(data){
+				for (var i = 0; i < data.length; i++) {
+					
+					if (myID == data[i].Requester_id) {
+						$('#requestsTable').append(
+							"<tr><td>" + data[i].NameOfRequester + "</td><td>" + data[i].Requester_id + "</td><td>" + data[i].NameOfDeliverer + "</td><td>" + data[i].Deliverer_id + "</td></tr>"
+						);
+
+					}
+
+					if (myID == data[i].Deliverer_id) {
+
+						$('#deliveriesTable').append(
+							"<tr><td>" + data[i].NameOfRequester + "</td><td>" + data[i].Requester_id + "</td><td>" + data[i].NameOfDeliverer + "</td><td>" + data[i].Deliverer_id + "</td></tr>"
+						);
+					}
+				}
+
+			}
 		});
 	}
+
+
 
 	function createTable( facebook_id, request_id, name, restaurant, food, timeRange, myLocation, deliveryFee, timeOfPost, uni_id){
 		var table = $('#appendTable');
@@ -95,19 +125,14 @@ $(loginform).on("submit", function(ev){
 
 		table.append(
 			"<tr id=\""+"table-"+uni_id+"\"><td>" + name + "</td><td>" + restaurant + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" + "$" 
-			+ deliveryFee + "</td><td><span data-livestamp=\"" + timeOfPost + "\"></span></td><td>" + button+ "</td></tr>");
+			+ deliveryFee + "</td><td><span data-livestamp=\"" + timeOfPost + "\"></span></td><td>" + button+ "</td></tr>"
+		);
 
 	}
 
 	function sendDeliverInfo(data, myId){
 		var myName = document.getElementById("name").innerHTML;
-		// var eta = 35;
-		// alert("You: " + myName + " Requester: " + data[myId].Name);
-		// console.log(myName)
-		// console.log(data[id].Name)
-		// console.log(eta)
-		// console.log(document.getElementById("facebookid"))
-		// button on click button for "submit"
+
 		$( ".delivrConfirm" ).bind( "click", function() {
 			console.log("delivrConfirm called");
 						
@@ -137,13 +162,7 @@ $(loginform).on("submit", function(ev){
 
 	function deleteInfo(data, myId){
 		var myName = document.getElementById("name").innerHTML;
-		// var eta = 35;
-		// alert("You: " + myName + " Requester: " + data[myId].Name);
-		// console.log(myName)
-		// console.log(data[id].Name)
-		// console.log(eta)
-		// console.log(document.getElementById("facebookid"))
-		// button on click button for "submit"
+
 		$.ajax({
 			type: "DELETE",
 			url: "/delete/post",

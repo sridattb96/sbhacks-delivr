@@ -141,8 +141,8 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active"><a href="#myFeed" aria-controls="myFeed" role="tab" data-toggle="tab">Feed</a></li>
-          <li role="presentation"><a href="#myOrders" aria-controls="myOrders" role="tab" data-toggle="tab">Incoming Orders <span class="badge">420</span></a></li>
-          <li role="presentation"><a href="#myOrders" aria-controls="myOrders" role="tab" data-toggle="tab"> Outgoing Orders <span class="badge">420</span></a></li>
+          <li role="presentation"><a href="#requests" aria-controls="myOrders" role="tab" data-toggle="tab">My Requests<span class="badge">420</span></a></li>
+          <li role="presentation"><a href="#deliveries" aria-controls="myOrders" role="tab" data-toggle="tab">  My Deliveries<span class="badge">420</span></a></li>
         </ul>
 
         <!-- Tab panes -->
@@ -202,13 +202,47 @@
 
           </div>
 
-          <div role="tabpanel" class="tab-pane" id="myOrders">
+          <div role="tabpanel" class="tab-pane" id="requests">
             <div class="container">
               <div class="row">
-                <h1>hello</h1>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Requester Name</th>
+                      <th>Requester ID</th>
+                      <th>Deliverer Name</th>
+                      <th>Deliverer ID</th>
+                    </tr>
+                  </thead>
+                  <tbody id="requestsTable">
+
+                  </tbody>
+                </table>
+                
               </div>
             </div>
           </div>
+
+          <div role="tabpanel" class="tab-pane" id="deliveries">
+            <div class="container">
+              <div class="row">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Requester Name</th>
+                      <th>Requester ID</th>
+                      <th>Deliverer Name</th>
+                      <th>Deliverer ID</th>
+                    </tr>
+                  </thead>
+                  <tbody id="deliveriesTable">
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
