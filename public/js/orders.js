@@ -60,6 +60,7 @@ $(loginform).on("submit", function(ev){
 					var myId = this.id;
 					$('#foodModal').html(data[myId].Food);
 					console.log("gime food");
+					deleteInfo(data, myId);
 					sendDeliverInfo(data, myId);		
 				});
 				$( ".delete-post" ).bind( "click", function() {
@@ -74,6 +75,24 @@ $(loginform).on("submit", function(ev){
 		});
 
 		var myID = document.getElementById("facebookid").innerHTML; 
+
+		$.ajax({
+			type: "GET",
+			url: "/newsfeed",
+			data: {
+			},
+			success:function(data){
+				button=""
+				for (var i = 0; i < data.length; i++){
+					if (myID == data[i].Facebook_id){
+						$('#requestsTable').append(
+							"<tr id=\""+"table-"+data[i]._id+"\"><td>" + data[i].Restaurant + "</td><td>" + data[i].TimeRange + "</td><td>" + data[i].MyLocation + "</td><td>" + "$" 
+			+ data[i].DeliveryFee + "</td><td><span data-livestamp=\"" + data[i].TimeOfPost + "\"></span></td><td>" + button+ "</td></tr>"
+						);
+					}
+				}
+			}
+		});
 
 		$.ajax({
 			type: "GET", 
@@ -100,7 +119,10 @@ $(loginform).on("submit", function(ev){
 
 			}
 		});
+
 	}
+
+
 
 
 
@@ -136,7 +158,6 @@ $(loginform).on("submit", function(ev){
 		$( ".delivrConfirm" ).bind( "click", function() {
 			console.log("delivrConfirm called");
 						
-			
 				$.ajax({
 					type: "POST",
 					url: "/deliveryInfo",
