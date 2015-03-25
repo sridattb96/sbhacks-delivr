@@ -58,15 +58,15 @@ $(loginform).on("submit", function(ev){
 			},
 			success:function(data){
 				for (var i = 0; i < data.length; i++) {
-					//if (data[i].PickedUp == false) {
+					if (data[i].PickedUp == "false") {
 						createTable( data[i].Facebook_id, i, data[i].Name, data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost, data[i]._id);
-					//}
+					}
 				}
 
 				$( ".delivrButton" ).bind( "click", function() {
 					var myId = this.id;
 					$('#foodModal').html(data[myId].Food);
-					console.log("gime food");
+					// console.log("gime food");
 					$( ".delivrConfirm" ).bind( "click", function() {
 						sendDeliverInfo(data, myId);
 						deleteInfo(data, myId);
