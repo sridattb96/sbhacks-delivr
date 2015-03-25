@@ -174,12 +174,6 @@ $(loginform).on("submit", function(ev){
 
 	function sendDeliverInfo(data, myId){
 		var myName = document.getElementById("name").innerHTML;
-
-
-		//$( ".delivrConfirm" ).bind( "click", function() {
-			// console.log("delivrConfirm called");
-
-						
 				$.ajax({
 					type: "POST",
 					url: "/deliveryInfo",
@@ -199,10 +193,7 @@ $(loginform).on("submit", function(ev){
 					error: function(){
 						console.log("ERROR")
 					}
-				});
-
-			
-			
+				});		
 	}
 
 
