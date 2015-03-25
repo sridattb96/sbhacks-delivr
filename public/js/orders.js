@@ -38,7 +38,7 @@ $(loginform).on("submit", function(ev){
       TimeRange:document.getElementById("inputTimeRange").value,
       MyLocation:document.getElementById("inputMyLocation").value,
       DeliveryFee:document.getElementById("inputDeliveryPrice").value,
-
+      PickedUp:false
     },
     success:function(response1){
       window.location.reload();
@@ -58,7 +58,9 @@ $(loginform).on("submit", function(ev){
 			},
 			success:function(data){
 				for (var i = 0; i < data.length; i++) {
-					createTable( data[i].Facebook_id, i, data[i].Name, data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost, data[i]._id);
+					if (data[i].PickedUp == false) {
+						createTable( data[i].Facebook_id, i, data[i].Name, data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost, data[i]._id);
+					}
 				}
 
 				$( ".delivrButton" ).bind( "click", function() {
@@ -66,7 +68,10 @@ $(loginform).on("submit", function(ev){
 					$('#foodModal').html(data[myId].Food);
 					console.log("gime food");
 					sendDeliverInfo(data, myId);	
-					deleteInfo(data, myId);	
+					// deleteInfo(data, myId);	
+					// var hideID = "#table-" + data[myId]._id;
+					// console.log(hideID);
+					// $(hideID).css('display', 'none');
 				});
 				$( ".delete-post" ).bind( "click", function() {
 					var myId = this.id;
@@ -184,7 +189,8 @@ $(loginform).on("submit", function(ev){
 						NameOfRequester: data[myId].Name,
 						Deliverer_id: document.getElementById("facebookid").innerHTML,
 						PhoneNumber: document.getElementById("phone-number").value,
-						Requester_id: data[myId].Facebook_id
+						Requester_id: data[myId].Facebook_id,
+						Post_id: data[myId]._id
 					},
 					success:function(data){
 						ref.set(data);
