@@ -92,13 +92,14 @@ $(loginform).on("submit", function(ev){
 			data: {
 			},
 			success:function(data){
-				button=""
+				var button=""
 				for (var i = 0; i < data.length; i++){
 					if (myID == data[i].Facebook_id){
 						reqCount++; 
+						button = '<button id="req' + i + '" type="button" class="delete-post btn btn-info changeSize" data-toggle="modal" data-target="#requestModal">View Order</button>';
 						$('#requestsTable').append(
 
-							"<tr id=\""+"table-"+data[i]._id+"\"><td>" + data[i].Restaurant + "</td><td>" + data[i].TimeRange + "</td><td>" + data[i].MyLocation + "</td><td>" + "$" 
+							"<tr id=\""+"table-"+data[i]._id+"\"><td>" + data[i].Restaurant + "</td><td>" + data[i].MyLocation + "</td><td>" + "$" 
 			+ data[i].DeliveryFee + "</td><td><span data-livestamp=\"" + data[i].TimeOfPost + "\"></span></td><td>" + button+ "</td></tr>"
 						);
 					}
@@ -119,6 +120,7 @@ $(loginform).on("submit", function(ev){
 					if (myID == data[i].Requester_id) {
 
 						$('#requestsTable').append(
+							
 
 							"<tr><td>" + data[i].NameOfRequester + "</td><td>" + data[i].Requester_id + "</td><td>" + data[i].NameOfDeliverer + "</td><td>" + data[i].Deliverer_id + "</td></tr>"
 						);
@@ -150,36 +152,28 @@ $(loginform).on("submit", function(ev){
 		var table = $('#appendTable');
 		var buttontext = "Delivr";
 		var buttontext2 = "Delete";
-		//var first = name.substring(0, indexOf(' '));
-		//name = first;
-		var button = ""
+		var button = "";
 		var id1 = document.getElementById("facebookid").innerHTML;
 		if (id1 == facebook_id){
 
-			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"delete-post btn btn-danger changeSize\">" + buttontext2
+			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"delete-post btn btn-danger changeSize\">" + buttontext2 + "</button>"
 			 
 		}
 		else{
 
-			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"changeSize btn btn-success delivrButton\" data-toggle=\"modal\" data-target=\"#delivrModal\">" + buttontext
+			button = "<button id=\"" + request_id + "\" type=\"button\" class=\"changeSize btn btn-success delivrButton\" data-toggle=\"modal\" data-target=\"#delivrModal\">" + buttontext + "</button>"
 
 		}
 
 		table.append(
 			"<tr id=\""+"table-"+uni_id+"\"><td>" + name + "</td><td>" + restaurant + "</td><td>" + timeRange + "</td><td>" + myLocation + "</td><td>" + "$" 
-			+ deliveryFee + "</td><td><span data-livestamp=\"" + timeOfPost + "\"></span></td><td>" + button+ "</td></tr>"
+			+ deliveryFee + "</td><td><span data-livestamp=\"" + timeOfPost + "\"></span></td><td>" + button + "</td></tr>"
 		);
 
 	}
 
 	function sendDeliverInfo(data, myId){
 		var myName = document.getElementById("name").innerHTML;
-
-
-		//$( ".delivrConfirm" ).bind( "click", function() {
-			// console.log("delivrConfirm called");
-
-						
 				$.ajax({
 					type: "POST",
 					url: "/deliveryInfo",
@@ -199,10 +193,7 @@ $(loginform).on("submit", function(ev){
 					error: function(){
 						console.log("ERROR")
 					}
-				});
-
-			
-			
+				});		
 	}
 
 
