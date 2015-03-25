@@ -114,17 +114,23 @@ app.post('/post', function(req, res){
 
 app.put('/pickedUp', function(req, res) {
   var col = db.collection("userPosts");
-  console.log(req.body.Post_id + "FUCKKKKK YESSSSSSS");
-  col.update(
-  { _id: req.body.Post_id },
-  {
-    $set: {
-      PickedUp: "true"  
-    }
-  }
-  )
-  // col.findById(req.body.Post_id, function(err, result) {
-  //   result.PickedUp = "true";
+  // console.log(req.body.Post_id + "FUCKKKKK YESSSSSSS");
+  // col.update({ _id: ObjectId(req.body.Post_id) }, {'$pull':{ PickedUp:"false"}}, function(err) {
+  //   if (err) throw err;
+  //   col.update({ _id: req.body.Post_id }, {'$push':{ PickedUp:"true" }}, function(err) {
+  //       if (err) throw err;
+  //       console.log('Updated!');
+  //   });
+  // });
+  console.log("yes");
+  col.updateById(req.body.Post_id, { PickedUp: "true" }, function(err) {});
+
+  col.updateById(req.body.Post_id,  { $set: {"PickedUp":'true'}}, function(err) {});
+ 
+  // res.send('success!!');
+  
+  // col.update({ _id : ObjectId(req.body.Post_id)}, {$set:{PickedUp:"true"}}, function(err, result) {
+  //   if (!err) console.log('PickedUp updated!');
   // });
 });
 

@@ -80,12 +80,12 @@ $(loginform).on("submit", function(ev){
 								Post_id : data[myId]._id
 							},
 							// data: 'Post_id=data[myId]._id'
-							dataType: 'json',
+							dataType: 'jsonp',
 							success: function (msg) {
 					      alert('Success');
 					    },
 					    error: function (err){
-					      alert('Error');
+					      alert(err);
 					    }
 						})
 						sendDeliverInfo(data, myId);
