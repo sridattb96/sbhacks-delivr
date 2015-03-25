@@ -120,7 +120,7 @@ app.post('/deliveryInfo', function(req, res){
 		}
 		else{
 			console.log(req.body);
-			res.send(req.body)
+			res.send(req.body);
 		}
 	});
 });
@@ -131,10 +131,6 @@ app.get('/getDeliveryInfo', function(req,res){
 		res.send(results);
 	});
 });
-
-app.get('/newsfeedpage', function(req,res){
-	res.render('newsfeed.ejs');
-})
 
 app.get('/newsfeed', function(req,res){
 	var col = db.collection("userPosts")

@@ -1,4 +1,7 @@
-var ref 
+var ref;
+var reqCount;
+var delCount;
+
 function startFireBase(){
 	ref = new Firebase("https://sbhacks2015.firebaseio.com/");
 	// Attach an asynchronous callback to read the data at our posts reference
@@ -13,8 +16,10 @@ function startFireBase(){
 
 }
 function start(){
-	startFireBase()
-	startNewsFeed()
+	startFireBase();
+	startNewsFeed();
+	reqCount = 0;
+	delCount = 0;
 }
 
 /*this is where the ajax code for the post request button goes*/
@@ -33,7 +38,7 @@ $(loginform).on("submit", function(ev){
       TimeRange:document.getElementById("inputTimeRange").value,
       MyLocation:document.getElementById("inputMyLocation").value,
       DeliveryFee:document.getElementById("inputDeliveryPrice").value,
-
+      PickedUp:false
     },
     success:function(response1){
       window.location.reload();
@@ -53,7 +58,9 @@ $(loginform).on("submit", function(ev){
 			},
 			success:function(data){
 				for (var i = 0; i < data.length; i++) {
-					createTable( data[i].Facebook_id, i, data[i].Name, data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost, data[i]._id);
+					if (data[i].PickedUp == false) {
+						createTable( data[i].Facebook_id, i, data[i].Name, data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost, data[i]._id);
+					}
 				}
 
 				$( ".delivrButton" ).bind( "click", function() {
@@ -63,8 +70,7 @@ $(loginform).on("submit", function(ev){
 					$( ".delivrConfirm" ).bind( "click", function() {
 						sendDeliverInfo(data, myId);
 						deleteInfo(data, myId);
-					});	
-						
+					});							
 				});
 				$( ".delete-post" ).bind( "click", function() {
 					var myId = this.id;
@@ -88,11 +94,14 @@ $(loginform).on("submit", function(ev){
 				button=""
 				for (var i = 0; i < data.length; i++){
 					if (myID == data[i].Facebook_id){
+						reqCount++; 
 						$('#requestsTable').append(
+
 							"<tr id=\""+"table-"+data[i]._id+"\"><td>" + data[i].Restaurant + "</td><td>" + data[i].TimeRange + "</td><td>" + data[i].MyLocation + "</td><td>" + "$" 
 			+ data[i].DeliveryFee + "</td><td><span data-livestamp=\"" + data[i].TimeOfPost + "\"></span></td><td>" + button+ "</td></tr>"
 						);
 					}
+					$('#requestsCount').html(reqCount);
 				}
 			}
 		});
@@ -103,12 +112,11 @@ $(loginform).on("submit", function(ev){
 			data: {
 			},
 			success:function(data){
-				var req = 0;
-				var del = 0;
+
 				for (var i = 0; i < data.length; i++) {
 
 					if (myID == data[i].Requester_id) {
-						req++;
+
 						$('#requestsTable').append(
 
 							"<tr><td>" + data[i].NameOfRequester + "</td><td>" + data[i].Requester_id + "</td><td>" + data[i].NameOfDeliverer + "</td><td>" + data[i].Deliverer_id + "</td></tr>"
@@ -117,7 +125,7 @@ $(loginform).on("submit", function(ev){
 					}
 
 					if (myID == data[i].Deliverer_id) {
-						del++; 
+						delCount++; 
 
 						$('#deliveriesTable').append(
 							"<tr><td>" + data[i].NameOfRequester + "</td><td>" + data[i].Requester_id + "</td><td>" + data[i].NameOfDeliverer + "</td><td>" + data[i].Deliverer_id + "</td></tr>"
@@ -125,8 +133,9 @@ $(loginform).on("submit", function(ev){
 					}
 				}
 
-				$('#requestsCount').html(req);
-				$('#deliveriesCount').html(del);
+
+				$('#requestsCount').html(reqCount);
+				$('#deliveriesCount').html(delCount);
 			}
 		});
 
@@ -179,7 +188,8 @@ $(loginform).on("submit", function(ev){
 						NameOfRequester: data[myId].Name,
 						Deliverer_id: document.getElementById("facebookid").innerHTML,
 						PhoneNumber: document.getElementById("phone-number").value,
-						Requester_id: data[myId].Facebook_id
+						Requester_id: data[myId].Facebook_id,
+						Post_id: data[myId]._id
 					},
 					success:function(data){
 						ref.set(data);
