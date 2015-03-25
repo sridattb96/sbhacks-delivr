@@ -38,7 +38,7 @@ $(loginform).on("submit", function(ev){
       TimeRange:document.getElementById("inputTimeRange").value,
       MyLocation:document.getElementById("inputMyLocation").value,
       DeliveryFee:document.getElementById("inputDeliveryPrice").value,
-      PickedUp:false
+      PickedUp:"false"
     },
     success:function(response1){
       window.location.reload();
@@ -58,7 +58,9 @@ $(loginform).on("submit", function(ev){
 			},
 			success:function(data){
 				for (var i = 0; i < data.length; i++) {
-					if (data[i].PickedUp == "false") {
+					if (data[i].PickedUp === "false") {
+						// console.log('false');
+
 						createTable( data[i].Facebook_id, i, data[i].Name, data[i].Restaurant, data[i].Food, data[i].TimeRange, data[i].MyLocation, data[i].DeliveryFee, data[i].TimeOfPost, data[i]._id);
 					}
 				}
@@ -68,8 +70,26 @@ $(loginform).on("submit", function(ev){
 					$('#foodModal').html(data[myId].Food);
 					// console.log("gime food");
 					$( ".delivrConfirm" ).bind( "click", function() {
+
+						// data[myId].PickedUp = "true"; 
+
+						$.ajax({
+							type: "PUT",
+							url: "/pickedUp",
+							data: { 
+								Post_id : data[myId]._id
+							},
+							// data: 'Post_id=data[myId]._id'
+							dataType: 'json',
+							success: function (msg) {
+					      alert('Success');
+					    },
+					    error: function (err){
+					      alert('Error');
+					    }
+						})
 						sendDeliverInfo(data, myId);
-						deleteInfo(data, myId);
+						// deleteInfo(data, myId);
 					});							
 				});
 
@@ -187,6 +207,8 @@ $(loginform).on("submit", function(ev){
 						Post_id: data[myId]._id
 					},
 					success:function(data){
+						var url = "http://graph.facebook.com/" + this.Requester_id + "/picture"
+						$('#delivererPic').attr('src', url);
 						ref.set(data);
 					},
 					xhrFields: {withCredentials: true},

@@ -112,6 +112,22 @@ app.post('/post', function(req, res){
 	});
 });
 
+app.put('/pickedUp', function(req, res) {
+  var col = db.collection("userPosts");
+  console.log(req.body.Post_id + "FUCKKKKK YESSSSSSS");
+  col.update(
+  { _id: req.body.Post_id },
+  {
+    $set: {
+      PickedUp: "true"  
+    }
+  }
+  )
+  // col.findById(req.body.Post_id, function(err, result) {
+  //   result.PickedUp = "true";
+  // });
+});
+
 app.post('/deliveryInfo', function(req, res){
 	var col = db.collection("deliveryInfo")
 	col.insert(req.body, {}, function(e, results){
