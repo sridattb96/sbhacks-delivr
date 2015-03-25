@@ -60,8 +60,11 @@ $(loginform).on("submit", function(ev){
 					var myId = this.id;
 					$('#foodModal').html(data[myId].Food);
 					console.log("gime food");
-					sendDeliverInfo(data, myId);	
-					deleteInfo(data, myId);	
+					$( ".delivrConfirm" ).bind( "click", function() {
+						sendDeliverInfo(data, myId);
+						deleteInfo(data, myId);
+					});	
+						
 				});
 				$( ".delete-post" ).bind( "click", function() {
 					var myId = this.id;
@@ -163,7 +166,7 @@ $(loginform).on("submit", function(ev){
 		var myName = document.getElementById("name").innerHTML;
 
 
-		$( ".delivrConfirm" ).bind( "click", function() {
+		//$( ".delivrConfirm" ).bind( "click", function() {
 			// console.log("delivrConfirm called");
 
 						
@@ -188,7 +191,7 @@ $(loginform).on("submit", function(ev){
 				});
 
 			
-			});
+			
 	}
 
 
